@@ -1,0 +1,17 @@
+[Unit]
+Description=Clash Daemon
+
+[Unit]
+Description=clash
+After=network.target
+
+[Service]
+WorkingDirectory=/home/cirno99/.config/clash
+ExecStart=/home/cirno99/.config/clash/start-clash.sh
+ExecStop=/home/cirno99/.config/clash/stop-clash.sh
+Environment="HOME=/home/cirno99"
+Environment="CLASH_URL=https://xxxxx.xxxxxxxxx.net/link/xxxxxxx?clash=1"
+
+[Install]
+WantedBy=multi-user.target
+

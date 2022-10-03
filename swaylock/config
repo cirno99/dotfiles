@@ -1,0 +1,18 @@
+# ignore-empty-password
+grace=0
+grace-no-mouse
+grace-no-touch
+
+indicator
+clock
+inside-color=00000000
+ring-color=00000000
+line-color=00000000
+indicator-radius=120
+text-color=ffffffff
+# screenshots
+image=/home/cirno99/backup/wallpapers/pixiv/2020/PID=83996512_13_UID=5512911_p0.png
+fade-in=0.5
+effect-blur=5x4
+# effect-greyscale
+

@@ -1,0 +1,1 @@
+/home/cirno99/.local/share/broot/launcher/fish/br.fish

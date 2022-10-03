@@ -1,0 +1,15 @@
+/* reduce padding of tabs */
+notebook tab {
+  min-height: 0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+/* reduce padding of buttons */
+notebook tab button {
+  min-height: 0;
+  min-width: 0;
+  padding: 1px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}

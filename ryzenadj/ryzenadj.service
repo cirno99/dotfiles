@@ -1,0 +1,12 @@
+[Unit]
+Description=Ryzenadj
+
+[Service]
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+Type=simple
+ExecStart=/usr/bin/ryzenadj --power-saving
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,32 @@
+#[url "https://hub.fastgit.xyz/"]
+#	insteadOf = https://github.com/
+[user]
+	email = cirno99fox@foxmail.com
+	name = cirno99
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[protocol "https"]
+	allow = always
+[http]
+	proxy = http://127.0.0.1:7890
+	sslverify = false
+[https]
+	proxy = http://127.0.0.1:7890
+[core]
+	editor = helix
+[diff]
+	external = difft
+	tool = difftastic
+[difftool]
+	prompt = false
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+# Use a pager for large output, just like other git commands.
+[pager]
+	difftool = true
+# `git dft` is less to type than `git difftool`.
+[alias]
+	dft = difftool

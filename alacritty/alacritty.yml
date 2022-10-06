@@ -58,7 +58,7 @@ font:
     style: Bold Italic
 
   # 细描边
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
   
 # -------------------------------theme---------------------------------

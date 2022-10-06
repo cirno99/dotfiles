@@ -114,13 +114,11 @@ func autorun(mwg *sync.WaitGroup) {
 			"kanshi",
 		),
 		exec.Command(
-			"xfce4-terminal",
-			"--hide-menubar",
-			"--hide-borders",
-			"--hide-toolbar",
-			"--command",
+			"env",
+			"WINIT_UNIX_BACKEND=x11",
+			"alacritty",
+			"-e",
 			"zld",
-			"--tab",
 		),
 	}
 

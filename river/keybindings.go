@@ -33,7 +33,8 @@ func keyBindings(mwg *sync.WaitGroup) {
 	// Default Apps
 	term := "footclient"
 	nuterm := "footclient -e fish"
-	xfce4term := "xfce4-terminal --hide-menubar --hide-borders --hide-toolbar --command zld"
+	// xfce4term := "xfce4-terminal --hide-menubar --hide-borders --hide-toolbar --command zld"
+	alacrittyTerm := "env WINIT_UNIX_BACKEND=x11 alacritty -e zld"
 	// browser := "vieb --proxy-server=\"localhost:7890\""
 	// browser := "microsoft-edge-dev"
 	launcher := "rofi -show drun"
@@ -53,7 +54,7 @@ func keyBindings(mwg *sync.WaitGroup) {
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "R", SPAWN, config+"/river/init"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Return", SPAWN, term),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "backslash", SPAWN, nuterm),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Return", SPAWN, xfce4term),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Return", SPAWN, alacrittyTerm),
 		//exec.Command(RIVERCTL, MAP, NORMAL, "Super", "W", SPAWN, browser),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "D", SPAWN, launcher),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "B", SPAWN, killwaybar),

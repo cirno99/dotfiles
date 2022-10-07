@@ -6,7 +6,7 @@
 #
 # e.g:
 # spawn { echo 3 }
-export def spawn [
+export def job-spawn [
     command: block   # the command to spawn
 ] {
     let config_path = $nu.config-path
@@ -16,7 +16,7 @@ export def spawn [
     {"job_id": $job_id}
 }
 
-export def log [
+export def job-log [
     id: int   # id to fetch log
 ] {
     pueue log $id -f --json
@@ -28,7 +28,7 @@ export def log [
 }
 
 # get job running status
-export def status () {
+export def job-status () {
     pueue status --json
     | from json
     | get tasks
@@ -38,11 +38,11 @@ export def status () {
 }
 
 # kill specific job
-export def kill (id: int) {
+export def job-kill (id: int) {
     pueue kill $id
 }
 
 # clean job log
-export def clean () {
+export def job-clean () {
     pueue clean
 }

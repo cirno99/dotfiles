@@ -542,4 +542,8 @@ alias gcfg = go-callvis -nostd -cacheDir=/home/cirno99/graphCache -algo=static .
 # alias cargo-test-nocap = cargo test -- --nocapture
 
 
+source '~/.config/nushell/filesystem/cdpath.nu'
+source '~/.config/nushell/filesystem/up.nu'
+source '~/.config/nushell/git.nu'
+source '~/.config/nushell/job.nu'
 source '~/.config/nushell/lib.nu'

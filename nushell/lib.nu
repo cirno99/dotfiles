@@ -1,3 +1,8 @@
+# Print working directory but abbreviates the home dir as ~
+def pwd-short [] {
+  $env.PWD | str replace $nu.home-path '~' -s
+}
+
 def f [arg] {
   ls **/*($arg)*
 }
@@ -24,75 +29,17 @@ export def app [] {
   ^open $"/Applications/($name)"
 }
 
-export def git-rebase-interactive [arg] {
-  let commit = if ($arg | describe) == int {
-    $"HEAD~($arg)"
-  } else {
-    $arg
-  }
-  git rebase --interactive $commit
-}
-
-
 export def mdbat [arg] {
    mdcat $arg | bat
-}
-
-export def git-logn [arg] {
-   git log -n $arg --oneline
-}
-
-export def git-logn-pretty [arg] {
-   git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | first $arg
-}
-
-export def git-diff-log [] {
-   git log --oneline -p --ext-diff
-}
-
-export def git-diff-logn [arg] {
-   git log -n $arg --oneline -p --ext-diff
-}
-
-export def git-diff-logn-author [num, author] {
-   git log -n $num --author $author --oneline -p --ext-diff
-}
-
-export def git-diff-logn-author-r [num, author] {
-   git log -n $num --author $author --oneline -p --ext-diff --reverse
-}
-
-export def git-reset [arg, --hard] {
-  let commit = if ($arg | describe) == int {
-    $"HEAD~($arg)"
-  } else {
-    $arg
-  }
-  if $hard {
-    git reset --hard $commit
-  } else {
-    git reset $commit
-  }
-}
-
-export def git-status [] {
-    def print-line [prefix: string] {
-        lines
-        | take until $it =~ '\d+ files? changed'
-        | each { |line| echo $"($prefix) ($line)" }
-    }
-    # અજ
-    git -c delta.paging=never diff --stat --color=always strato/src strato/docs
-    git -c delta.paging=never diff --stat --cached --color=always strato/src strato/docs
 }
 
 export def help-find [pattern: string] {
   help --find $pattern
 }
 
-export def kill-all [name: string] {
-  ps | where name == $name | get pid | each { |it| kill -9 $it }
-}
+# export def kill-all [name: string] {
+#   ps | where name == $name | get pid | each { |it| kill -9 $it }
+# }
 
 export def pid [] {
   pstree | rg -B 5 $nu.pid
@@ -137,6 +84,11 @@ def hu [arg] {
    h $"($arg)" | get command | uniq -u
 }
 
+def cargo-example [arg: string] {
+  cargo run --example $arg 
+}
+
 def cargo-test-nocapture [arg : string = ""] {
   cargo test $arg -- --nocapture
 }
+

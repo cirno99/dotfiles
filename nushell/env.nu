@@ -75,7 +75,9 @@ let-env NU_LIB_DIRS = [
 let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
+let-env CDPATH = [".", $env.HOME, "/", ([$env.HOME, ".config"] | path join)]
 
+let-env TERM = 'xterm'
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
@@ -86,3 +88,4 @@ mkdir ~/.cache/zoxide
 zoxide init nushell | save ~/.cache/zoxide/init.nu
 source ~/.cache/starship/init.nu
 source ~/.cache/zoxide/init.nu
+

@@ -101,6 +101,9 @@ func autorun(mwg *sync.WaitGroup) {
 		exec.Command(
 			"fcitx5",
 		),
+		exec.Command(
+			"pueued",
+		),
 		// exec.Command(
 		// 	"clash-verge",
 		// ),

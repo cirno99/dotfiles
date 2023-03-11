@@ -7,3 +7,8 @@ profile {
   output eDP-1 enable mode 1920x1080 position 1920,0
 }
 
+profile {
+  output eDP-1 enable mode 1920x1080 position 1920,0 scale 1.0
+  output DP-1 enable mode 1920x1280 position 0,0 scale 1.0
+}
+

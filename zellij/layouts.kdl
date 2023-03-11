@@ -1,0 +1,28 @@
+layout {
+
+    tab name="service" split_direction="vertical" {
+        pane size="30%"
+        pane size="70%" stacked=true {
+            pane name="s1"
+            pane name="s2"
+            pane name="s3"
+            pane name="s4"
+        }
+    }
+
+    tab name="top" {
+        pane split_direction="vertical" {
+            pane
+            pane command="btm"
+        }
+        pane split_direction="vertical" {
+            pane
+            pane {
+                cwd "/home/cirno99/Code/company/"
+            }
+        }
+        // pane size=1 borderless=true {
+        //     plugin location="zellij:compact-bar"
+        // }
+    }
+}

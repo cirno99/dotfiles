@@ -1,4 +1,0 @@
-keybinds:
-    unbind: [ Alt: Right, Alt: Left, Ctrl: 'o', Ctrl: 's']
-
-pane_frames: false

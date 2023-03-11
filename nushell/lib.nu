@@ -45,10 +45,6 @@ export def pid [] {
   pstree | rg -B 5 $nu.pid
 }
 
-def collect-args [] { # List[Tuple2] -> String
-  $in | where -b {|flag__arg| $flag__arg.0} | each {|it| $it.1} | str join ' ' 
-}
-
 def tee [] {
     let out = $in
     print $out

@@ -1,24 +1,30 @@
-#theme = "theo"
-#theme = "rose_pine"
-#theme = "base16_terminal"
-#theme = "night_owl"
-#theme = "tokyonight"
-theme = "sonokai"
+# theme = "theo"
+# theme = "rose_pine"
+# theme = "base16_terminal"
+# theme = "night_owl"
+# theme = "tokyonight"
+# theme = "sonokai"
+theme = "catppuccini_macchiato"
+# theme = "meliora"
 
 [editor]
 scrolloff = 5
 line-number = "relative"
 auto-completion = true
 auto-info = true
+auto-save = true
 completion-trigger-len = 2
 true-color = true
-shell = ["nu", "-c"]
+color-modes = true
+shell = ["fish", "-c"]
+bufferline = "multiple"
 # rulers = [100]
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
+
 
 [editor.file-picker]
 hidden = false
@@ -28,6 +34,17 @@ parents = true
 
 [editor.lsp]
 display-messages = true
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+character = "╎"
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
 
 [editor.auto-pairs]
 '(' = ')'
@@ -58,7 +75,7 @@ C-s = ":w" # Maps the Control-s to the typable command :w which is an alias for 
 # a = "move_char_left" # Maps the 'a' key to the move_char_left command
 # w = "move_line_up" # Maps the 'w' key move_line_up
 g = { a = "code_action" } # Maps `ga` to show possible code actions
-"space" = { "space" = "file_picker" }
+"space" = { "space" = "file_picker", i = ":toggle lsp.display-inlay-hints"}
 "ret" = ["open_below", "normal_mode"] # Maps the enter key to open_below then re-enter normal mode
 "D" = ["extend_to_line_bounds", "delete_selection"]
 "C-S-esc" = "extend_line" # Maps Control-Shift-Escape to extend_line

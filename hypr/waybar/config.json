@@ -1,0 +1,194 @@
+{
+	"position": "top",
+	"height": 0,
+    "margin-top": 6,
+    "margin-left": 8,
+    "margin-bottom": 6,
+    "margin-right": 8,
+    "spacing": -10, 
+	"modules-left": [
+		"custom/media",
+		"network",
+		"wlr/workspaces",
+		"hyprland/window"
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+		"tray",
+		"cpu",
+		"memory",
+		"temperature",
+		"custom/disk",
+		"pulseaudio",
+		"backlight",
+		"battery"
+	],
+	"wlr/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+			"1": "1",
+			"2": "2",
+			"3": "3",
+			"4": "4",
+			"5": "5",
+			"6": "6",
+			"7": "7",
+			"8": "8",
+			"9": "9"
+		}
+	},
+	"hyprland/window": {
+		"format": "|> {}",
+		"separate-outputs": true
+	},
+	"river/tags": {
+		"num-tags": 9
+	},
+	"river/mode": {
+		"format": "Mode: {}"
+	},
+	"clock": {
+		"format": "{:%m/%d %H:%M %A}"
+	},
+	"battery": {
+		"interval": 60,
+		"states": {
+			"hundred": 100,
+			"ninty": 90,
+			"eighty": 80,
+			"seventy": 70,
+			"sixty": 60,
+			"fifty": 50,
+			"fourty": 40,
+			"thirty": 30,
+			"twenty": 20,
+			"ten": 10,
+			"five": 5,
+			"three": 3
+		},
+		"format": "   {capacity}   ",
+		"format-charging": "   {capacity}   ",
+		"format-discharging": "   {capacity}   ",
+		"format-plugged": "   {capacity}   ",
+		"format-full": "   {capacity}   "
+	},
+	"network": {
+		"format-wifi": " ",
+		"format-ethernet": "ﯱ" ,
+		"format-linked": "  (No IP)",
+		"format-disconnected": "睊 ",
+		"format-alt": "{bandwidthUpBytes} {bandwidthDownBits}",
+		"interval": 2
+	},
+	"cpu": {
+		"interval": 5,
+		"format": " {usage}%({load})",
+		"states": {
+		  "warning": 70,
+		  "critical": 90
+		}
+	},
+	"memory": {
+        "tooltip": false,
+        "interval": 30,
+        "format": " {0:02d}%",
+        "max-length": 10
+    },
+	"custom/pacman": {
+		"format": " {}",
+		"interval": 3600,
+		"exec": "pacman -Qu | wc -l",
+		"exec-if": "exit 0",
+		"on-click": "footclient -e paru -Syu; pkill -SIGRTMIN+8 waybar",
+		"signal": 8
+	},	
+	"pulseaudio": {
+		"states": {
+			"hundred": 100,
+			"ninty": 90,
+			"eighty": 80,
+			"seventy": 70,
+			"sixty": 60,
+			"fifty": 50,
+			"fourty": 40,
+			"thirty": 30,
+			"twenty": 20,
+			"ten": 10,
+			"zero": 0
+		},
+		"format": "{icon}",
+		"format-muted": "",
+        "on-click": "pavucontrol",
+		"scroll-steps": 10,
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		}
+	},
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"tooltip-format": "{title}",
+		"icon-theme": "Papirus",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"on-click-right": "minimize",
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
+		}
+	},
+	"backlight": {
+		"device": "amd_backlight",
+		"on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1",
+		"on-click": "light -S 35",
+		"format": "{percent}% {icon}",
+		"format-icons": ["", ""]
+	},
+	"temperature": {
+        "tooltip": false,
+		"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+		"critical-threshold": 80,
+		"interval": 5,
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": ["", "", "", "", ""]
+	  },
+	"tray": {
+		"show-passive-items": true,
+		"icon-size": 20,
+		"spacing": 10
+	},
+	"custom/joljol": {
+		"exec": "joljol",
+		"format": "{}",
+		"update-interval": 100
+	},
+	"custom/media": {
+		"format": "{icon}{}",
+		"return-type": "json",
+		"format-icons": {
+		  "Playing": " ",
+		  "Paused": " "
+		},
+		"max-length": 20,
+		"exec": "playerctl metadata --format '{\"text\": \"{{artist}}-{{title}}\", \"tooltip\": \"{{ playerName }}: {{ artist }} - {{ title }} {{ duration(position) }}|{{ duration(mpris:length) }}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+		"on-click": "playerctl play-pause"
+	},
+	"custom/disk": {
+        "tooltip": false,
+        "interval": 60,
+        "format": " {}",
+        "exec": "~/.config/river/waybar/disk-usage.sh"
+    }
+}

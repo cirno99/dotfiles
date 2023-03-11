@@ -1,0 +1,263 @@
+* {
+	border: none;
+	font-family: "Recursive Sans Casual Static", "Source Code Pro Nerd Font";
+	font-size: 16px;
+	min-height: 16px;
+	border-radius: 0px;
+}
+
+window#waybar {
+	background: transparent;
+	border-radius: 0px;
+}
+tooltip {
+	background: #1f1d2f;
+}
+
+tooltip label {
+	color: #e0def4;
+}
+#tags {
+	background-color: transparent;
+	border-radius: 4px;
+	padding: 5px 5px 0px 5px;
+}
+
+#tags button {
+	padding: 2px 7px;
+	margin-right: 3px;
+	margin-left: 3px;
+	color: transparent;
+	border-radius: 4px;
+	/* border: 0px solid transparent; */
+	/* border-top: 3px solid #f6c177; */
+	/* border-left: 3px solid #f6c177; */
+	/* border-bottom: 2px solid #f6c177; */
+	background: #5b5b5b;
+}
+
+#tags button.occupied {
+	border-radius: 0px;
+	font-weight: 900;
+	color: #ffffff;
+	background: #64b5f6;
+	border-radius: 4px;
+}
+
+#tags button.focused {
+	font-weight: 900;
+	color: #e0def4;
+	background: #1f1d2f;
+	border-radius: 4px;
+}
+
+#tags button.urgent {
+	color: #e0def4;
+	background-color: #eb6f92;
+	border-radius: 4px;
+}
+
+#custom-date,
+#custom-media,
+#custom-pacman,
+#custom-disk,
+#cpu,
+#memory,
+#clock,
+#battery,
+#pulseaudio,
+#backlight,
+#temperature,
+#network,
+#custom-joljol {
+	color: #e0def4;
+	background: #1f1d2f;
+	padding: 2.5px 10px;
+	margin: 4px 10px 4px 10px;
+	font-weight: 900;
+	border-radius: 4px;
+}
+
+#clock {
+	color: #e0def4;
+}
+
+#custom-joljol {
+	color: #1f1d2f;
+	margin: 10px 10px 0px 10px;
+	border-radius: 4px;
+}
+
+#battery {
+	background: #64b5f6;
+	color: #1f1d2f;
+	border-radius: 4px;
+}
+
+/* #battery.charging { */
+/* 	color: #9ccfd8; */
+/* } */
+
+#battery.ninty.charging {
+	background: linear-gradient(to right, #64b5f6 90%, #9ccfd8 90%);
+}
+#battery.ninty:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 90%, #1f1d2f 90%);
+}
+#battery.eighty.charging {
+	background: linear-gradient(to right, #64b5f6 80%, #9ccfd8 80%);
+}
+#battery.eighty:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 80%, #1f1d2f 80%);
+}
+#battery.seventy.charging {
+	background: linear-gradient(to right, #64b5f6 70%, #9ccfd8 70%);
+}
+#battery.seventy:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 70%, #1f1d2f 70%);
+}
+#battery.sixty.charging {
+	background: linear-gradient(to right, #64b5f6 60%, #9ccfd8 60%);
+}
+#battery.sixty:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 60%, #1f1d2f 60%);
+}
+#battery.fifty.charging {
+	background: linear-gradient(to right, #64b5f6 50%, #9ccfd8 50%);
+}
+#battery.fifty:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 50%, #1f1d2f 50%);
+}
+#battery.fourty.charging {
+	background: linear-gradient(to right, #64b5f6 40%, #9ccfd8 40%);
+}
+#battery.fourty:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 40%, #1f1d2f 40%);
+}
+#battery.thirty.charging {
+	background: linear-gradient(to right, #64b5f6 30%, #9ccfd8 30%);
+}
+#battery.thirty:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 30%, #1f1d2f 30%);
+}
+#battery.twenty.charging {
+	background: linear-gradient(to right, #64b5f6 20%, #9ccfd8 20%);
+}
+#battery.twenty:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 20%, #eb6f92 20%);
+}
+#battery.ten.charging {
+	background: linear-gradient(to right, #64b5f6 10%, #9ccfd8 10%);
+}
+#battery.ten:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 10%, #eb6f92 10%);
+}
+#battery.five.charging {
+	background: linear-gradient(to right, #64b5f6 5%, #9ccfd8 5%);
+}
+#battery.five:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 5%, #eb6f92 5%);
+}
+#battery.three.charging {
+	background: linear-gradient(to right, #64b5f6 3%, #9ccfd8 3%);
+}
+#battery.three:not(.charging) {
+	background: linear-gradient(to right, #64b5f6 3%, #eb6f92 3%);
+}
+#network {
+	color: #64b5f6;
+}
+
+#backlight{
+	background: #92c6cd;
+	color: #1f1d2f;
+}
+
+#pulseaudio {
+	background: #894295;
+	color: #1f1d2f;
+}
+#pulseaudio.ninty {
+	background: linear-gradient(to top, #c4a7e7 90%, #908caa 90%);
+}
+#pulseaudio.eighty {
+	background: linear-gradient(to top, #c4a7e7 80%, #908caa 80%);
+}
+#pulseaudio.seventy {
+	background: linear-gradient(to top, #c4a7e7 70%, #908caa 70%);
+}
+#pulseaudio.sixty {
+	background: linear-gradient(to top, #c4a7e7 60%, #908caa 60%);
+}
+#pulseaudio.fifty {
+	background: linear-gradient(to top, #c4a7e7 50%, #908caa 50%);
+}
+#pulseaudio.fourty {
+	background: linear-gradient(to top, #c4a7e7 40%, #908caa 40%);
+}
+#pulseaudio.thirty {
+	background: linear-gradient(to top, #c4a7e7 30%, #908caa 30%);
+}
+#pulseaudio.twenty {
+	background: linear-gradient(to top, #c4a7e7 20%, #908caa 20%);
+}
+#pulseaudio.ten {
+	background: linear-gradient(to top, #c4a7e7 10%, #908caa 10%);
+}
+#pulseaudio.zero {
+	background: linear-gradient(to top, #c4a7e7 0%, #908caa 00%);
+}
+#pulseaudio.muted {
+	font-weight: 900;
+	background: #eb6f92;
+}
+
+#temperature {
+	background: #ef8d8d;
+	color: #1f1d2f;
+}
+
+#custom-media {
+	background: #8db3ef;
+	color: #1f1d2f;
+}
+
+#custom-pacman {
+	background: #e0def4;
+	color: #163669;
+}
+
+#custom-disk {
+	background: #c4a7e7;
+	color: #1f1d2f;
+}
+
+#cpu {
+	background: #dfef8d;
+	color: #1f1d2f;
+}
+
+#memory {
+	background: #ef988d;
+	color: #1f1d2f;
+}
+
+#tray {
+	/* background: #505050; */
+	/* padding: 5px 10px; */
+	margin: 0px 10px 0px 10px;
+	color: #e0def4;
+}
+
+#tray menu {
+	color: #e0def4;
+}
+
+#tray>.passive {
+	-gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+	-gtk-icon-effect: highlight;
+	background-color: #eb4d4b;
+}

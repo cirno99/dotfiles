@@ -12,6 +12,14 @@ comment-token = "//"
 language-server = { command = "rust-analyzer" }
 indent = { tab-width = 4, unit = "    " }
 
+[language.config]
+inlayHints.bindingModeHints.enable = true
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+
 [language.auto-pairs]
 '(' = ')'
 '{' = '}'
@@ -249,6 +257,15 @@ language-server = { command = "gopls" }
 # TODO: gopls needs utf-8 offsets?
 indent = { tab-width = 4, unit = "\t" }
 
+
+[language.config.hints]
+assignVariableTypes = true
+compositeLiteralFields = true
+constantValues = true
+functionTypeParameters = true
+parameterNames = true
+rangeVariableTypes = true
+
 [language.debugger]
 name = "go"
 transport = "tcp"
@@ -340,6 +357,18 @@ comment-token = "//"
 language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "javascript" }
 indent = { tab-width = 2, unit = "  " }
 
+[language.config]
+hostInfo = "helix"
+
+[language.config.javascript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"                       # 'none' | 'literals' | 'all';
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
 [language.debugger]
 name = "node-debug2"
 transport = "stdio"
@@ -367,6 +396,18 @@ language-server = { command = "typescript-language-server", args = ["--stdio"], 
 indent = { tab-width = 2, unit = "  " }
 grammar = "javascript"
 
+[language.config]
+hostInfo = "helix"
+
+[language.config.javascript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"                       # 'none' | 'literals' | 'all';
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
 [[language]]
 name = "typescript"
 scope = "source.ts"
@@ -377,6 +418,18 @@ roots = []
 # TODO: highlights-params
 language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "typescript"}
 indent = { tab-width = 2, unit = "  " }
+
+[language.config]
+hostInfo = "helix"
+
+[language.config.typescript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"                       # 'none' | 'literals' | 'all';
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
 
 [[grammar]]
 name = "typescript"
@@ -391,6 +444,21 @@ roots = []
 # TODO: highlights-params
 language-server = { command = "typescript-language-server", args = ["--stdio"], language-id = "typescriptreact" }
 indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "tsx"
+
+[language.config]
+hostInfo = "helix"
+
+[language.config.typescript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"                       # 'none' | 'literals' | 'all';
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
 
 [[grammar]]
 name = "tsx"

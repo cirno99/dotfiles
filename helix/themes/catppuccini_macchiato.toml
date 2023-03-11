@@ -1,6 +1,6 @@
 # Syntax highlighting
 # -------------------
-"type" = "yellow"
+"type" = { fg = "yellow", modifiers = ["bold", "italic"] }
 "type.enum.variant" = "peach"
 "constructor" = "sapphire"
 "constant" = "peach"
@@ -11,8 +11,8 @@
 "string.special" = "pink"
 "comment" = { fg = "surface2", modifiers = ["italic"] }
 "variable" = "text"
-"variable.parameter" = { fg = "maroon", modifiers = ["italic"] }
-"variable.builtin" = "red"
+"variable.parameter" = { fg = "maroon", modifiers = ["bold"] }
+"variable.builtin" = { fg = "red", modifiers = ["italic"] }
 "variable.other.member" = "teal"
 "label" = "sapphire" # used for lifetimes
 "punctuation" = "overlay2"
@@ -64,6 +64,9 @@
 
 "ui.virtual" = "overlay0"
 "ui.virtual.ruler" = { bg = "surface0" }
+"ui.virtual.inlay-hint" = { fg = "overlay2", bg = "surface0" }          
+"ui.virtual.inlay-hint.parameter" = { fg = "overlay2", bg = "surface0" }
+"ui.virtual.inlay-hint.type" = { fg = "pink", bg = "surface0" }     
 
 "ui.selection" = { bg = "surface1" }
 

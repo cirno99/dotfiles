@@ -1,23 +1,5 @@
 # Nushell Environment Config File
 
-let-env GOPATH = (echo [$env.HOME go] | path join)
-let-env PATH = (
-    echo $env.PATH |
-    append '/usr/local/bin' |
-    append '/usr/local/bin/php' |
-    append '/usr/local/go/bin' |
-    append '/home/cirno99/.yarn/bin' |
-    append '/home/cirno99/.npm/bin' |
-    append '/home/cirno99/go/bin' |
-    append '/home/cirno99/.local/bin' |
-    append '/home/cirno99/.g/go/bin' |
-    append '/home/cirno99/bin' |
-    append '/home/cirno99/.cargo/bin' |
-    append (echo [$env.HOME '.composer/vendor/bin'] | path join) | 
-    # append (echo [$env.GOROOT 'bin'] | path join) | 
-    append (echo [$env.GOPATH 'bin'] | path join)
-)
-
 def create_left_prompt [] {
     let path_segment = if (is-admin) {
         $"(ansi red_bold)($env.PWD)"
@@ -75,17 +57,37 @@ let-env NU_LIB_DIRS = [
 let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
-let-env CDPATH = [".", $env.HOME, "/", ([$env.HOME, ".config"] | path join)]
+
+# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
+# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+
+
+let-env GOPATH = (echo [$env.HOME go] | path join)
+let-env PATH = (
+    echo $env.PATH |
+    append '/usr/local/bin' |
+    append '/usr/local/bin/php' |
+    append '/usr/local/go/bin' |
+    append '/home/cirno99/.yarn/bin' |
+    append '/home/cirno99/.npm/bin' |
+    append '/home/cirno99/go/bin' |
+    append '/home/cirno99/.local/bin' |
+    append '/home/cirno99/.g/go/bin' |
+    append '/home/cirno99/bin' |
+    append '/home/cirno99/.cargo/bin' |
+    append '/home/cirno99/kit/x86_64-linux-musl-cross/bin' |
+    append (echo [$env.HOME '.composer/vendor/bin'] | path join) | 
+    # append (echo [$env.GOROOT 'bin'] | path join) | 
+    append (echo [$env.GOPATH 'bin'] | path join)
+)
+
+
 
 let-env TERM = 'xterm'
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
-mkdir ~/.cache/starship
-starship init nu | save ~/.cache/starship/init.nu
-
-mkdir ~/.cache/zoxide
-zoxide init nushell | save ~/.cache/zoxide/init.nu
-source ~/.cache/starship/init.nu
-source ~/.cache/zoxide/init.nu
-
+starship init nu | save --force ~/.starship.nu
+# let-env _ZO_DATA_DIR = "/home/cirno99/.local/share/zoxide"
+# zoxide init nushell --hook prompt | save -f ~/.zoxide.nu 
+zoxide init nushell | save -f ~/.zoxide.nu 

@@ -54,28 +54,36 @@ export def git-rebase-interactive [arg] {
   git rebase --interactive $commit
 }
 
+export def git-show [commitId] {
+  git difftool $"($commitId)~1" $commitId
+}
+
 export def git-logn [arg] {
-   git log -n $arg --oneline
+  git log -n $arg --oneline
 }
 
 export def git-logn-pretty [arg] {
-   git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | first $arg
+  git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | first $arg
 }
 
 export def git-diff-log [] {
-   git log --oneline -p --ext-diff
+  DFT_BYTE_LIMIT=20000 git log --oneline -p --ext-diff
 }
 
 export def git-diff-logn [arg] {
-   git log -n $arg --oneline -p --ext-diff
+  DFT_BYTE_LIMIT=20000 git log -n $arg --oneline -p --ext-diff
+}
+
+export def git-diff-logn-r [arg] {
+  DFT_BYTE_LIMIT=20000 git log -n $arg --oneline -p --ext-diff --reverse
 }
 
 export def git-diff-logn-author [num, author] {
-   git log -n $num --author $author --oneline -p --ext-diff
+  DFT_BYTE_LIMIT=20000 git log -n $num --author $author --oneline -p --ext-diff
 }
 
 export def git-diff-logn-author-r [num, author] {
-   git log -n $num --author $author --oneline -p --ext-diff --reverse
+  DFT_BYTE_LIMIT=20000 git log -n $num --author $author --oneline -p --ext-diff --reverse
 }
 
 export def git-reset [arg, --hard] {

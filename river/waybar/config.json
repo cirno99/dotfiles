@@ -3,10 +3,10 @@
 	"position": "top",
 	"height": 0,
 	"modules-left": [
-		"river/mode",
-		"river/tags",
 		"custom/media",
-		"network"
+		"network",
+		"river/tags",
+		"river/mode"
 	],
 	"modules-center": [
 		"clock",
@@ -22,6 +22,25 @@
 		"backlight",
 		"battery"
 	],
+	"wlr/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+			"1": "ー",
+			"2": "二",
+			"3": "三",
+			"4": "四",
+			"5": "五",
+			"6": "六",
+			"7": "七",
+			"8": "八",
+			"9": "九",
+			"10": "十"
+		}
+	},
+	"hyprland/window": {
+		"format": "{}"
+	},
 	"river/tags": {
 		"num-tags": 9
 	},
@@ -113,6 +132,17 @@
 				"",
 				""
 			]
+		}
+	},
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"tooltip-format": "{title}",
+		"icon-theme": "Papirus",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"on-click-right": "minimize",
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
 		}
 	},
 	"backlight": {

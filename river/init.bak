@@ -1,0 +1,116 @@
+#!/bin/sh
+
+### Autostart
+killall mako
+riverctl spawn mako
+killall waybar
+riverctl spawn waybar
+killall swaybg
+riverctl spawn "swaybg -i ~/backgrounds/background.png"
+
+### Basic shortcuts
+riverctl map normal Super+Shift C spawn "~/.config/river/init" # Restart config
+riverctl map normal Super+Shift E exit                         # Exit
+riverctl map normal Super Return spawn alacritty               # Terminal
+riverctl map normal Super D spawn kickoff                      # Launcher
+riverctl map normal Super B spawn google-chrome-stable         # Browser
+riverctl map normal Super E spawn code                         # Editor
+
+### Sound controls
+riverctl map normal None XF86AudioRaiseVolume spawn "pamixer -i 5"
+riverctl map normal None XF86AudioLowerVolume spawn "pamixer -d 5"
+riverctl map normal None XF86AudioMute spawn "pamixer -t"
+riverctl map normal None XF86AudioMicMute spawn "pamixer --default-source -t"
+
+### Screenshots
+riverctl map normal None Print spawn "grimshot --notify copy screen"
+riverctl map normal Super Print spawn "grimshot --notify save screen ~/screenshots/$(date +%Hh_%Mm_%Ss_%d_%M_%Y).png"
+riverctl map normal Super+Shift s spawn "grimshot --notify copy area"
+riverctl map normal Alt Print spawn "grimshot --notify copy active"
+riverctl map normal Alt+Super Print spawn "grimshot --notify save active ~/screenshots/$(date +%Hh_%Mm_%Ss_%d_%M_%Y).png"
+
+### Brightness
+riverctl map normal None XF86MonBrightnessDown spawn "light -U 10"
+riverctl map normal None XF86MonBrightnessUp spawn "light -A 10"
+
+### Touchpad
+for pad in $(riverctl list-inputs | grep -i touchpad); do
+  riverctl input $pad events enabled
+  riverctl input $pad accel-profile adaptive
+  riverctl input $pad pointer-accel 0.25
+  riverctl input $pad disable-while-typing enabled
+  riverctl input $pad tap enabled
+done
+
+### Window controls
+riverctl map normal Super Q close
+
+riverctl map normal Super J focus-view next
+riverctl map normal Super K focus-view previous
+
+riverctl map normal Super+Shift J swap next
+riverctl map normal Super+Shift K swap previous
+
+riverctl map normal Super H send-layout-cmd rivercarro "main-ratio -0.05"
+riverctl map normal Super L send-layout-cmd rivercarro "main-ratio +0.05"
+
+riverctl map normal Super+Shift H send-layout-cmd rivercarro "main-count +1"
+riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
+
+riverctl map normal Super+Alt H move left 100
+riverctl map normal Super+Alt J move down 100
+riverctl map normal Super+Alt K move up 100
+riverctl map normal Super+Alt L move right 100
+
+riverctl map normal Super+Alt+Control H snap left
+riverctl map normal Super+Alt+Control J snap down
+riverctl map normal Super+Alt+Control K snap up
+riverctl map normal Super+Alt+Control L snap right
+
+riverctl map normal Super+Alt+Shift H resize horizontal -100
+riverctl map normal Super+Alt+Shift J resize vertical 100
+riverctl map normal Super+Alt+Shift K resize vertical -100
+riverctl map normal Super+Alt+Shift L resize horizontal 100
+
+riverctl map-pointer normal Super BTN_LEFT move-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+
+# Change workspaces
+for i in $(seq 1 9); do
+  tags=$((1 << ($i - 1)))
+
+  # Super+[1-9] to focus tag [0-8]
+  riverctl map normal Super $i set-focused-tags $tags
+
+  # Super+Shift+[1-9] to tag focused view with tag [0-8]
+  riverctl map normal Super+Shift $i set-view-tags $tags
+
+  # Super+Ctrl+[1-9] to toggle focus of tag [0-8]
+  riverctl map normal Super+Control $i toggle-focused-tags $tags
+
+  # Super+Shift+Ctrl+[1-9] to toggle tag [0-8] of focused view
+  riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
+done
+
+all_tags=$(((1 << 32) - 1))
+riverctl map normal Super 0 set-focused-tags $all_tags
+riverctl map normal Super+Shift 0 set-view-tags $all_tags
+
+riverctl map normal Super Space toggle-float
+riverctl map normal Super F toggle-fullscreen
+
+riverctl map normal Super Up send-layout-cmd rivercarro "main-location top"
+riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
+riverctl map normal Super Down send-layout-cmd rivercarro "main-location bottom"
+riverctl map normal Super Left send-layout-cmd rivercarro "main-location left"
+
+riverctl background-color 0x002b36
+riverctl border-color-focused 0x93a1a1
+riverctl border-color-unfocused 0x586e75
+
+# riverctl set-repeat 50 300
+
+riverctl spawn "dbus-update-activation-environment SEATD_SOCK DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"
+riverctl default-layout rivercarro
+rivercarro -inner-gaps 10 -outer-gaps 0
+

@@ -40,8 +40,11 @@ display-inlay-hints = true
 render = true
 character = "╎"
 
+[editor.soft-wrap]
+enable = true
+
 [editor.statusline]
-left = ["mode", "spinner"]
+left = ["mode", "spinner", "version-control"]
 center = ["file-name"]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
 separator = "│"
@@ -75,7 +78,7 @@ C-s = ":w" # Maps the Control-s to the typable command :w which is an alias for 
 # a = "move_char_left" # Maps the 'a' key to the move_char_left command
 # w = "move_line_up" # Maps the 'w' key move_line_up
 g = { a = "code_action" } # Maps `ga` to show possible code actions
-"space" = { "space" = "file_picker", i = ":toggle lsp.display-inlay-hints"}
+"space" = { "space" = "file_picker", i = ":toggle lsp.display-inlay-hints", "C-f" = "file_picker_in_current_buffer_directory"}
 "ret" = ["open_below", "normal_mode"] # Maps the enter key to open_below then re-enter normal mode
 "D" = ["extend_to_line_bounds", "delete_selection"]
 "C-S-esc" = "extend_line" # Maps Control-Shift-Escape to extend_line

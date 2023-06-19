@@ -1,6 +1,6 @@
 * {
 	border: none;
-	font-family: "Recursive Sans Casual Static", "JetBrainsMono Nerd Font";
+	font-family: "Recursive Sans Casual Static", "Source Code Pro Nerd Font";
 	font-size: 16px;
 	min-height: 16px;
 	border-radius: 0px;
@@ -73,7 +73,7 @@ tooltip label {
 	color: #e0def4;
 	background: #1f1d2f;
 	padding: 2.5px 10px;
-	margin: 10px 10px 0px 0px;
+	margin: 4px 10px 4px 10px;
 	font-weight: 900;
 	border-radius: 4px;
 }
@@ -245,10 +245,19 @@ tooltip label {
 #tray {
 	/* background: #505050; */
 	/* padding: 5px 10px; */
-	margin: 10px 10px 0px 10px;
+	margin: 0px 10px 0px 10px;
 	color: #e0def4;
 }
 
 #tray menu {
 	color: #e0def4;
+}
+
+#tray>.passive {
+	-gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+	-gtk-icon-effect: highlight;
+	background-color: #eb4d4b;
 }

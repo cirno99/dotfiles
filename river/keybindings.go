@@ -33,22 +33,16 @@ func keyBindings(mwg *sync.WaitGroup) {
 	// Default Apps
 	term := "footclient"
 	nuterm := "footclient -e fish"
-	// xfce4term := "xfce4-terminal --hide-menubar --hide-borders --hide-toolbar --command zld"
-	alacrittyTerm := "env WINIT_UNIX_BACKEND=x11 alacritty -e zld"
-	// browser := "vieb --proxy-server=\"localhost:7890\""
-	// browser := "microsoft-edge-dev"
-	launcher := "rofi -show drun"
-	killwaybar := "killall -SIGUSR1 waybar || waybar -c ~/.config/river/waybar/config.json  -s ~/.config/river/waybar/style.css"
-	// launcher := "onagre"
+	alacrittyTerm := "WAYLAND_DISPLAY=alacritty alacritty --option font.size=7 &"
+	killwaybar := "killall -SIGUSR1 waybar || waybar -c ~/.config/river/waybar_catppuccin/config-river.json  -s ~/.config/river/waybar_catppuccin/river_style.css"
+	// launcher := "wofi --show drun --style=/home/cirno99/.config/wofi/styles.css"
+	launcher := "fish -c kickoff"
 	netman := "networkmanager_dmenu"
-	swayLock := "swaylock -C /home/cirno99/.config/swaylock/config"
-	// passManager := "rofi-rbw"
-	clipboardManager := "clipman pick -t rofi"
+	clipboardManager := "clipman pick -t wofi"
 	changeWallpaper := "sh /home/cirno99/.config/river/change_wallpaper.sh"
-	grimSelect := "grim-cli select-copy"
+	grimSelect := "sh /home/cirno99/.config/river/screenshots.sh"
 	wayshot := "grim-cli copy"
-	// favoClipboard := "favo $(wl-paste)"
-	// favoRofi := `awk '{print $1"|"$2" "$3" "$4" "$5}' ~/notes/bm.md | rofi -dmenu -display-column-separator "\|" -display-columns 2 | awk -F "|" '{print $1}' | wl-copy`
+	waylogout := "wlogout"
 	// List of Keybinings
 	allCMDs := []*exec.Cmd{
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "R", SPAWN, config+"/river/init"),
@@ -59,9 +53,10 @@ func keyBindings(mwg *sync.WaitGroup) {
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "D", SPAWN, launcher),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "B", SPAWN, killwaybar),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "N", SPAWN, netman),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", SPAWN, swayLock),
+		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", SPAWN, swayLock),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "V", SPAWN, clipboardManager),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "E", SPAWN, grimSelect),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "X", SPAWN, waylogout),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "E", SPAWN, wayshot),
 		// exec.Command(RIVERCTL, MAP, NORMAL, "Super", "B", SPAWN, favoRofi),
 		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "B", SPAWN, favoClipboard),

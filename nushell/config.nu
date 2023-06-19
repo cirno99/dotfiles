@@ -347,10 +347,10 @@ let-env config = {
   render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 
   hooks: {
-    pre_prompt: [{
+    pre_prompt: [{ ||
       null  # replace with source code to run before the prompt is shown
     }]
-    pre_execution: [{
+    pre_execution: [{ || 
       null  # replace with source code to run before the repl input is run
     }]
     env_change: {
@@ -358,7 +358,7 @@ let-env config = {
         null  # replace with source code to run if the PWD environment is different since the last repl input
       }]
     }
-    display_output: {
+    display_output: { ||
       if (term size).columns >= 100 { table -e } else { table }
     }
   }
@@ -591,37 +591,33 @@ let-env config = {
 # Zoxide
 source '~/.zoxide.nu'
 
+alias grep = rg
 alias ga = git add -A
 alias gai = git add -i
 alias gc = git clone
 alias gp = git pull
 alias gck = git checkout
-alias gckb = git checkout -b 
+# alias gckb = git checkout -b 
 alias glob = git log $"origin/(git rev-parse --abbrev-ref HEAD | str trim -r)"
 alias gu = git status -uall
-alias ha = $nu.scope.aliases
 alias hc = help commands
 alias hf = help-find
-alias update = sudo pacman -Syy
 alias upgrade = paru
-alias sauce = $"source '($nu.config-path)'"
 alias gitclone = git clone --depth 1
-alias cat = bat
+alias cat = bat --style plain
 alias du = diskus -v
 alias treecl = exa -T -L
 
-alias vim = helix
+alias vim = hx
 alias ls = exa --icons
 alias la = exa -a --icons
 alias ll = exa -la --icons
 alias df = lfs -a -s filesystem
 
-alias fzf = fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'
 alias gcfg = go-callvis -nostd -cacheDir=/home/cirno99/graphCache -algo=static .
 # alias cargo-test-nocap = cargo test -- --nocapture
 
 # alias sudo = doas
-alias vim = helix
 
 source '~/.config/nushell/fnm.nu'
 source '~/.config/nushell/filesystem/cdpath.nu'
@@ -630,8 +626,7 @@ source '~/.config/nushell/job.nu'
 source '~/.config/nushell/lib.nu'
 
 # Theme
-use /home/cirno99/.config/nushell/themes/themes/dracula.nu *
-let-env config = ($env.config | merge {color_config: (dracula)})
+use /home/cirno99/.config/nushell/themes/themes/fruit-soda.nu *
+let-env config = ($env.config | merge {color_config: (fruit_soda)})
 source '~/.starship.nu'
 
-alias nuproxy = (let-env http_proxy = 'http://127.0.0.1:7890' ; let-env https_proxy = 'http://127.0.0.1:7890'; )

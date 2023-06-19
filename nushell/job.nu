@@ -6,6 +6,15 @@
 #
 # e.g:
 # spawn { echo 3 }
+
+export def midu [] {
+	bilibili-live-stream 891530
+}
+
+export def ucye [] {
+	seam bili 24535666 | jq '.nodes [0] .url' | xargs mpv
+}
+
 export def job-spawn [
     command: block   # the command to spawn
 ] {

@@ -48,6 +48,7 @@
 # User Interface
 # --------------
 "ui.background" = { fg = "text", bg = "base" }
+# "ui.background" = { }
 
 "ui.linenr" = { fg = "surface1" }
 "ui.linenr.selected" = { fg = "lavender" }
@@ -64,9 +65,9 @@
 
 "ui.virtual" = "overlay0"
 "ui.virtual.ruler" = { bg = "surface0" }
-"ui.virtual.inlay-hint" = { fg = "overlay2", bg = "surface0" }          
+"ui.virtual.inlay-hint" = { fg = "surface1", bg = "mantle" }
 "ui.virtual.inlay-hint.parameter" = { fg = "overlay2", bg = "surface0" }
-"ui.virtual.inlay-hint.type" = { fg = "pink", bg = "surface0" }     
+"ui.virtual.inlay-hint.type" = { fg = "surface1", bg = "mantle" }
 
 "ui.selection" = { bg = "surface1" }
 

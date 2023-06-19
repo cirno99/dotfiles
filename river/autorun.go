@@ -20,15 +20,8 @@ func autorun(mwg *sync.WaitGroup) {
 	wg.Wait()
 
 	cmdList := []*exec.Cmd{
-		// Setting wallpaper (use 'ln -P' to an image here.)
-		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=86036589_殻-KARA-_UID=4094653_p1.jpg"),
-		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=82761669_Corner_UID=19920821_p0.png"),
-		exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=81519241_雨の休日_UID=3725576_p0.png"),
-		// exec.Command("swaybg", "-c", "#"+rosePine["base"]),
-
-		// I really hate this thing. But for now I cannot replace it! :(
-		// exec.Command("tor"),
-
+		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=82055611_薫る六月照る水無月。_UID=2863217_p0.jpg"),
+		exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/photo_2022-02-27_17-40-50.jpg"),
 		// something I saw others did. I don't know why.
 		exec.Command(
 			"dbus-update-activation-environment",
@@ -52,9 +45,9 @@ func autorun(mwg *sync.WaitGroup) {
 			"--font",
 			"monospace",
 			"--padding",
-			"10",
+			"7",
 			"--width",
-			"350",
+			"550",
 		),
 
 		// the layouting engine for river
@@ -69,9 +62,9 @@ func autorun(mwg *sync.WaitGroup) {
 		exec.Command(
 			"waybar",
 			"-c",
-			config+"/river/waybar/config.json",
+			config+"/river/waybar_catppuccin/config-river.json",
 			"-s",
-			config+"/river/waybar/style.css",
+			config+"/river/waybar_catppuccin/river_style.css",
 		),
 
 		exec.Command(
@@ -104,24 +97,14 @@ func autorun(mwg *sync.WaitGroup) {
 		exec.Command(
 			"pueued",
 		),
+		exec.Command(
+			"clash-verge",
+		),
 		// exec.Command(
-		// 	"clash-verge",
+		// 	"clash",
 		// ),
 		exec.Command(
-			"clash",
-		),
-		exec.Command(
-			"dxreminders",
-		),
-		exec.Command(
 			"kanshi",
-		),
-		exec.Command(
-			"env",
-			"WINIT_UNIX_BACKEND=x11",
-			"alacritty",
-			"-e",
-			"zld",
 		),
 	}
 

@@ -1,3 +1,4 @@
+# FNM
 # load env variables
 fnm env --json | from json | load-env
 
@@ -16,4 +17,4 @@ def-env fnmcd [path?: string] {
   }
 }
 
-alias cd = fnmcd
+alias cdf = fnmcd

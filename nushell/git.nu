@@ -3,7 +3,7 @@ export def remotes [] {
 }
 
 export def branches [] {
-	git branch | lines | str trim | each {
+	git branch | lines | str trim | each { ||
 		if ($in | str starts-with '* ') {
 			{ cur: ' * ', name: ($in | str substring '2,') }
 		} else {
@@ -13,7 +13,7 @@ export def branches [] {
 }
 
 export def remote-branches [remote: string] {
-	git branch -a | lines | str trim | each {
+	git branch -a | lines | str trim | each { ||
 		{ name: $in } 
 	} | where name =~ $remote
 }
@@ -23,8 +23,8 @@ export def switch [index: int] {
 
 export def add [] {
 	let not_staged = ($in | where stage != 'staged')
-	$not_staged | where changes == 'deleted' | each { git rm $in.file }
-	$not_staged | where changes != 'deleted' | each { git add $in.file }
+	$not_staged | where changes == 'deleted' | each { || git rm $in.file }
+	$not_staged | where changes != 'deleted' | each { || git add $in.file }
 }
 
 export def pr [] {

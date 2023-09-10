@@ -21,7 +21,9 @@ func autorun(mwg *sync.WaitGroup) {
 
 	cmdList := []*exec.Cmd{
 		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=82055611_薫る六月照る水無月。_UID=2863217_p0.jpg"),
-		exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/photo_2022-02-27_17-40-50.jpg"),
+		// exec.command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/photo_2022-02-27_17-40-50.jpg"),
+		exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=83980769_鯨注意報_UID=8356367_p0.jpg"),
+		exec.Command("dufs", "/home/cirno99/geekdoc/01-专栏课", "--allow-search"),
 		// something I saw others did. I don't know why.
 		exec.Command(
 			"dbus-update-activation-environment",

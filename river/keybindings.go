@@ -33,13 +33,18 @@ func keyBindings(mwg *sync.WaitGroup) {
 	// Default Apps
 	term := "footclient"
 	nuterm := "footclient -e fish"
-	alacrittyTerm := "WAYLAND_DISPLAY=alacritty alacritty --option font.size=7 &"
+	// alacrittyTerm := "WAYLAND_DISPLAY=alacritty alacritty --option font.size=7 &"
+	// tdropAlacritty := "WAYLAND_DISPLAY=no tdrop -mta -h 70% -w 50% alacritty"
+	wezTerm := "WAYLAND_DISPLAY=no wezterm"
+	tdropWezTerm := "WAYLAND_DISPLAY=no tdrop -mta -h 70% -w 50% wezterm"
 	killwaybar := "killall -SIGUSR1 waybar || waybar -c ~/.config/river/waybar_catppuccin/config-river.json  -s ~/.config/river/waybar_catppuccin/river_style.css"
 	// launcher := "wofi --show drun --style=/home/cirno99/.config/wofi/styles.css"
 	launcher := "fish -c kickoff"
 	netman := "networkmanager_dmenu"
 	clipboardManager := "clipman pick -t wofi"
 	changeWallpaper := "sh /home/cirno99/.config/river/change_wallpaper.sh"
+	cycleFullScreenNext := "riverctl toggle-fullscreen; riverctl focus-view next; riverctl toggle-fullscreen"
+	cycleFullScreenPrev := "riverctl toggle-fullscreen; riverctl focus-view previous; riverctl toggle-fullscreen"
 	grimSelect := "sh /home/cirno99/.config/river/screenshots.sh"
 	wayshot := "grim-cli copy"
 	waylogout := "wlogout"
@@ -47,8 +52,9 @@ func keyBindings(mwg *sync.WaitGroup) {
 	allCMDs := []*exec.Cmd{
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "R", SPAWN, config+"/river/init"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Return", SPAWN, term),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "T", SPAWN, tdropWezTerm),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "backslash", SPAWN, nuterm),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Return", SPAWN, alacrittyTerm),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Return", SPAWN, wezTerm),
 		//exec.Command(RIVERCTL, MAP, NORMAL, "Super", "W", SPAWN, browser),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "D", SPAWN, launcher),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "B", SPAWN, killwaybar),
@@ -66,6 +72,8 @@ func keyBindings(mwg *sync.WaitGroup) {
 		// view focus control
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "J", "focus-view", "next"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "K", "focus-view", "previous"),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Tab", SPAWN, cycleFullScreenNext),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Tab", SPAWN, cycleFullScreenPrev),
 
 		// bump focused view to the top of the stack
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Space", "zoom"),
@@ -145,8 +153,8 @@ func keyBindings(mwg *sync.WaitGroup) {
 		exec.Command(RIVERCTL, MAP, NORMAL, "None", "XF86AudioMute", SPAWN, "pactl set-sink-mute @DEFAULT_SINK@ toggle"),
 
 		// brightness keys
-		exec.Command(RIVERCTL, MAP, NORMAL, "None", "XF86MonBrightnessUp", SPAWN, "light -A 5"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "None", "XF86MonBrightnessDown", SPAWN, "light -U 5"),
+		exec.Command(RIVERCTL, MAP, NORMAL, "None", "XF86MonBrightnessUp", SPAWN, "brightnessctl s 3%+"),
+		exec.Command(RIVERCTL, MAP, NORMAL, "None", "XF86MonBrightnessDown", SPAWN, "brightnessctl s 3%-"),
 	}
 	runner(allCMDs)
 	mwg.Done()

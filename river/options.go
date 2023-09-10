@@ -11,7 +11,7 @@ func setOptions(mwg *sync.WaitGroup) {
 		exec.Command(RIVERCTL, "set-repeat", "50", "300"),
 
 		// Make certain views start floating
-		exec.Command(RIVERCTL, "float-filter-add", "app-id", "Rofi"),
+		exec.Command(RIVERCTL, "float-filter-add", "app-id", "wezterm"),
 		exec.Command(RIVERCTL, "float-filter-add", "app-id", "float"),
 		exec.Command(RIVERCTL, "float-filter-add", "app-id", "popup"),
 		exec.Command(RIVERCTL, "float-filter-add", "app-id", "pinentry-qt"),

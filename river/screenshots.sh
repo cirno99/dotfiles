@@ -1,1 +1,1 @@
-grimblast --notify copysave area ~/图片/Screenshots/shot-$(date +'%s_screenshot.png') 
+grimblast --notify copysave area ~/Pictures/Screenshots/shot-$(date +'%s_screenshot.png') 

@@ -237,7 +237,7 @@ let light_theme = {
 
 
 # The default config record. This is where much of your global configuration is setup.
-let-env config = {
+$env.config = {
   ls: {
     use_ls_colors: true # use the LS_COLORS environment variable to colorize output
     clickable_links: true # enable or disable clickable links. Your terminal has to support links.
@@ -354,8 +354,10 @@ let-env config = {
       null  # replace with source code to run before the repl input is run
     }]
     env_change: {
-      PWD: [{|before, after|
-        null  # replace with source code to run if the PWD environment is different since the last repl input
+      PWD: [{ |before, after|
+        if ('FNM_DIR' in $env) and ([.nvmrc .node-version] | path exists | any { |it| $it }) {
+          fnm use
+        }
       }]
     }
     display_output: { ||
@@ -605,10 +607,12 @@ alias hf = help-find
 alias upgrade = paru
 alias gitclone = git clone --depth 1
 alias cat = bat --style plain
-alias du = diskus -v
+# alias du = diskus -v
+alias du = dust
 alias treecl = exa -T -L
 
 alias vim = hx
+alias helix = hx
 alias ls = exa --icons
 alias la = exa -a --icons
 alias ll = exa -la --icons
@@ -616,17 +620,17 @@ alias df = lfs -a -s filesystem
 
 alias gcfg = go-callvis -nostd -cacheDir=/home/cirno99/graphCache -algo=static .
 # alias cargo-test-nocap = cargo test -- --nocapture
+alias xitca-doc = dufs /home/cirno99/Code/Rust/xitca-web/target/doc/ --allow-search -p 5001
 
 # alias sudo = doas
 
-source '~/.config/nushell/fnm.nu'
 source '~/.config/nushell/filesystem/cdpath.nu'
 source '~/.config/nushell/git.nu'
-source '~/.config/nushell/job.nu'
+source '~/.config/nushell/uutils-alias.nu'
 source '~/.config/nushell/lib.nu'
 
 # Theme
 use /home/cirno99/.config/nushell/themes/themes/fruit-soda.nu *
-let-env config = ($env.config | merge {color_config: (fruit_soda)})
+$env.config = ($env.config | merge {color_config: (fruit_soda)})
 source '~/.starship.nu'
 

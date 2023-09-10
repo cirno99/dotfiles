@@ -15,10 +15,6 @@ export def exec-async [commands: string] {
     bash -c $"nu -c '($commands)' &"
 }
 
-export def do-async [block: block] {
-  # block may call bultins and external commands only
-  bash -c $"nu -c 'do (view-source $block)' &"
-}
 
 export def fzf-cmd [] {
   str join "\n" | ^fzf --info=hidden | str trim -r
@@ -31,6 +27,14 @@ export def app [] {
 
 export def mdbat [arg] {
    mdcat $arg | bat
+}
+
+export def ast-bat [keyword, lang] {
+   ast-grep -p $keyword -l $lang | bat -l $lang
+}
+
+export def astgrep [keyword, lang] {
+   ast-grep -p $keyword -l $lang
 }
 
 export def help-find [pattern: string] {
@@ -54,17 +58,6 @@ def tee [] {
 export def time-now [] {
   let time = (date format '%s %f' | split column ' ' sec ns | first)
   (($time | get sec | into int) * 1sec) + (($time | get ns | into int) * 1ns)
-}
-
-export def time [block: block] {
-  let t0 = (time-now)
-  do $block
-  let t1 = (time-now)
-  $t1 - $t0
-}
-
-export def which-follow [name: string] {
-  which -a $name | each {|it| echo $it | path expand -c ['path'] }
 }
 
 

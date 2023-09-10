@@ -3,7 +3,7 @@
 	"layer": "top",
 	"modules-left": ["custom/launcher","river/tags","custom/updates","custom/media"],
 	"modules-center": ["clock", "tray"],
-	"modules-right": ["custom/wallpaper","network","cpu","custom/disk","memory","temperature","backlight","pulseaudio", "battery"],
+	"modules-right": ["custom/wallpaper","cpu","custom/disk","memory","temperature","backlight","pulseaudio", "battery"],
 	
 	"pulseaudio": {
 		"tooltip": false,
@@ -29,8 +29,9 @@
 		"tooltip": false,
 		"format": " {}%",
 		"interval":1,
-        "on-scroll-up": "light -A 5",
-		"on-scroll-down": "light -U 5"
+    "on-scroll-up": "brightnessctl s 1%+",
+		"on-scroll-down": "brightnessctl s 1%-",
+    "on-click": "brightnessctl s 33%",
 	},
     "battery": {
         "states": {
@@ -76,7 +77,7 @@
       "on-click": "foot -e sudo pacman -Syu && notify-send 'The system has been updated' "
   },
   "custom/wallpaper":{
-      "format":" ",
+      "format":"",
       "on-click": "sh /home/cirno99/.config/river/change_wallpaper.sh"
   },
 	"temperature": {
@@ -90,6 +91,8 @@
 	"custom/media": {
 		"format": "{icon}{}",
 		"return-type": "json",
+		"on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
 		"format-icons": {
 		  "Playing": " ",
 		  "Paused": " "

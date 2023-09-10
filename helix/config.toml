@@ -83,7 +83,7 @@ g = { a = "code_action" } # Maps `ga` to show possible code actions
 "D" = ["extend_to_line_bounds", "delete_selection"]
 "C-S-esc" = "extend_line" # Maps Control-Shift-Escape to extend_line
 #G = { G = "goto_file_end" }
-backspace = ":sh cargo run"
+backspace = ":sh cargo check"
 "A-backspace" = ":sh cargo test"
 "C-A-s" = "save_selection"
 

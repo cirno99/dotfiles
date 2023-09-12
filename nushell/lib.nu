@@ -1,23 +1,6 @@
 # Print working directory but abbreviates the home dir as ~
-def pwd-short [] {
-  $env.PWD | str replace $nu.home-path '~' -s
-}
-
-def f [arg] {
-  ls **/*($arg)*
-}
-
-export def chrome [path: string] {
-  ^open -a `/Applications/Google Chrome.app/` $path
-}
-
 export def exec-async [commands: string] {
     bash -c $"nu -c '($commands)' &"
-}
-
-
-export def fzf-cmd [] {
-  str join "\n" | ^fzf --info=hidden | str trim -r
 }
 
 export def app [] {
@@ -29,12 +12,36 @@ export def mdbat [arg] {
    mdcat $arg | bat
 }
 
+export def skmare [] {
+   sk -m --ansi --regex --preview="bat {} --color=always"
+}
+
+export def psk [] {
+   /usr/bin/ps aux | skmare 
+}
+
+export def netstatsk [] {
+   netstat -tulnp | skmare  
+}
+
 export def ast-bat [keyword, lang] {
    ast-grep -p $keyword -l $lang | bat -l $lang
 }
 
 export def astgrep [keyword, lang] {
    ast-grep -p $keyword -l $lang
+}
+
+export def sk-vim [keyword] {
+  /usr/bin/vim (fd $keyword | skmare )
+}
+
+export def sk-helix [keyword] {
+  helix (fd $keyword | skmare )
+}
+
+export def sk-grep [] {
+  sk -i -c 'rg --color=always --line-number "{}"' --ansi
 }
 
 export def help-find [pattern: string] {
@@ -62,11 +69,11 @@ export def time-now [] {
 
 
 def h [arg] {
-  history | find $arg
+  history | rg $arg
 }
 
 def p [arg] {
-  ps | find $arg
+  ps | rg $arg
 }
 
 def hu [arg] {
@@ -77,7 +84,7 @@ def cargo-example [arg: string] {
   cargo run --example $arg 
 }
 
-def cargo-test-nocapture [arg : string = ""] {
-  cargo test $arg -- --nocapture
+def cargo-test-nocapture [package:string, lib: string = ""] {
+  cargo test --package $package --lib -- $lib --nocapture --show-output
 }
 

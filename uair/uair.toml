@@ -1,0 +1,44 @@
+[defaults]
+format = "{time}\n"
+
+[[sessions]]
+id = "work1"
+name = "Work"
+duration = "25m"
+command = "notify-send '#1 Work Done!'"
+# autostart = true
+
+[[sessions]]
+id = "rest1"
+name = "Rest"
+duration = "5m"
+command = "notify-send '#1 Rest Done!'"
+autostart = true
+
+[[sessions]]
+id = "work2"
+name = "Work"
+duration = "25m"
+command = "notify-send '#2 Work Done!'"
+# autostart = true
+
+[[sessions]]
+id = "rest2"
+name = "Rest"
+duration = "5m"
+command = "notify-send '#2 Rest Done!'"
+autostart = true
+
+[[sessions]]
+id = "work3"
+name = "Work"
+duration = "25m"
+command = "notify-send '#3 Work Done!'"
+# autostart = true
+
+[[sessions]]
+id = "rest3"
+name = "Rest"
+duration = "5m"
+command = "notify-send '#3 Rest Done!'"
+autostart = true

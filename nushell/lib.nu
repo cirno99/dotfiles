@@ -12,12 +12,24 @@ export def mdbat [arg] {
    mdcat $arg | bat
 }
 
-export def skmare [] {
+export def skmarep [] {
    sk -m --ansi --regex --preview="bat {} --color=always"
+}
+
+export def skmare [] {
+   sk -m --ansi --regex --bind 'alt-a:select-all,alt-d:deselect-all'
+}
+
+export def skmreb [] {
+   sk -m --regex --bind 'alt-a:select-all,alt-d:deselect-all'
 }
 
 export def psk [] {
    /usr/bin/ps aux | skmare 
+}
+
+export def dustsk [] {
+   dust | skmare 
 }
 
 export def netstatsk [] {
@@ -32,16 +44,20 @@ export def astgrep [keyword, lang] {
    ast-grep -p $keyword -l $lang
 }
 
-export def sk-vim [keyword] {
-  /usr/bin/vim (fd $keyword | skmare )
+export def fdsk [keyword] {
+  fd $keyword | skmreb
 }
 
-export def sk-helix [keyword] {
-  helix (fd $keyword | skmare )
+export def sk-vim [keyword] {
+  /usr/bin/vim (fdsk $keyword)
+}
+
+export def sk-open [command1, keyword] {
+  (fdsk $keyword) | xargs $command1
 }
 
 export def sk-grep [] {
-  sk -i -c 'rg --color=always --line-number "{}"' --ansi
+  sk -i -c 'rg --color=always --line-number "{}"' --ansi --regex
 }
 
 export def help-find [pattern: string] {
@@ -88,3 +104,6 @@ def cargo-test-nocapture [package:string, lib: string = ""] {
   cargo test --package $package --lib -- $lib --nocapture --show-output
 }
 
+def nipo-live [] {
+ seam -l bili -i 30868374 | grep minihevc/index.m3u8 | head -n 1 | xargs mpv
+}

@@ -610,6 +610,11 @@ alias cat = bat --style plain
 # alias du = diskus -v
 alias du = dust
 alias treecl = exa -T -L
+alias docker = podman
+alias docker-compose = podman-compose
+
+alias miyou-back = docker exec -i php8 /bin/bash -c '(. /root/.bashrc && cd /data/www/miyou && php /data/www/miyou/bin/hyperf.php serve:watch)'
+alias miyou-front = docker exec -i php8 /bin/bash -c '(. /root/.bashrc && yarn --cwd $(pwd)/dev-web/vue3-naiveui-admin/ dev )'
 
 alias vim = hx
 alias helix = hx
@@ -617,16 +622,19 @@ alias ls = exa --icons
 alias la = exa -a --icons
 alias ll = exa -la --icons
 alias df = lfs -a -s filesystem
+alias gitui = gitui -t macchiato.ron
 
 alias gcfg = go-callvis -nostd -cacheDir=/home/cirno99/graphCache -algo=static .
 # alias cargo-test-nocap = cargo test -- --nocapture
 alias xitca-doc = dufs /home/cirno99/Code/Rust/xitca-web/target/doc/ --allow-search -p 5001
 
+# alias navi = navi --finder 'skim'
 # alias sudo = doas
 
 source '~/.config/nushell/filesystem/cdpath.nu'
 source '~/.config/nushell/git.nu'
 source '~/.config/nushell/uutils-alias.nu'
+#source '~/.config/nushell/job.nu'
 source '~/.config/nushell/lib.nu'
 
 # Theme

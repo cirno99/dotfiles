@@ -3,10 +3,10 @@ layout {
     tab name="service" split_direction="vertical" {
         pane size="30%"
         pane size="70%" stacked=true {
-            pane name="s1"
+            pane name="gitui"
             pane name="s2"
             pane name="s3"
-            pane name="s4"
+            pane name="music"
         }
     }
 

@@ -105,5 +105,14 @@ def cargo-test-nocapture [package:string, lib: string = ""] {
 }
 
 def nipo-live [] {
- seam -l bili -i 30868374 | grep minihevc/index.m3u8 | head -n 1 | xargs mpv
+  seam -l bili -i 30868374 | grep minihevc/index.m3u8 | head -n 1 | xargs mpv
 }
+
+def bili-live [arg: string] {
+  seam -l bili -i $arg | head -n 1 | xargs mpv
+}
+
+def wiki-tui [arg: string] {
+  proxychains wiki-tui $arg -l zh
+}
+

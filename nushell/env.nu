@@ -28,7 +28,6 @@ $env.PROMPT_INDICATOR = { || "〉" }
 $env.PROMPT_INDICATOR_VI_INSERT = { || ": " }
 $env.PROMPT_INDICATOR_VI_NORMAL = { || "〉" }
 $env.PROMPT_MULTILINE_INDICATOR = { || "::: " }
-
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
@@ -92,6 +91,7 @@ if not (which fnm | is-empty) {
 
 $env.TERM = 'xterm'
 $env.PROTO_ROOT = '/home/cirno99/.proto'
+$env.DOCKER_HOST = unix:///run/user/1000/podman/podman.sock
 # $env.RUSTUP_UPDATE_ROOT = 'https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup'
 # $env.RUSTUP_DIST_SERVER = 'https://mirrors.tuna.tsinghua.edu.cn/rustup'
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:

@@ -1,8 +1,9 @@
-{
+[{
 	"gtk-layer-shell": true,
+	"output": "eDP-1",
 	"layer": "top",
 	"modules-left": ["custom/launcher","river/tags","custom/updates","custom/media"],
-	"modules-center": ["clock", "tray"],
+	"modules-center": ["clock", "tray","custom/uair"],
 	"modules-right": ["custom/wallpaper","cpu","custom/disk","memory","temperature","backlight","pulseaudio", "battery"],
 	
 	"pulseaudio": {
@@ -51,7 +52,8 @@
 	},
     
   "clock": {
-      "format": "{: %m/%d %H:%M %A}"
+    "format": "{: %m/%d %H:%M %A}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   
   "cpu": {
@@ -106,5 +108,14 @@
         "interval": 60,
         "format": " {}",
         "exec": "~/.config/river/waybar_catppuccin/disk-usage.sh"
-    }
-}
+  },
+	"custom/uair": {
+    "format": "🍅 {}",
+		"on-click": "~/.config/river/waybar_catppuccin/ctrl-mpv.sh",
+		"on-click-right": "~/.cargo/bin/uairctl next",
+    "exec": "~/.config/river/waybar_catppuccin/exec-uair-mpv.sh",
+	},
+}, {
+    "mode": "hide",
+    "layer": "bottom",
+}]

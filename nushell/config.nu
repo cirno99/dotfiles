@@ -246,7 +246,7 @@ $env.config = {
     always_trash: false # always act as if -t was given. Can be overridden with -p
   }
   cd: {
-    abbreviations: false # allows `cd s/o/f` to expand to `cd some/other/folder`
+    # abbreviations: false # allows `cd s/o/f` to expand to `cd some/other/folder`
   }
   table: {
     mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
@@ -623,6 +623,7 @@ alias la = exa -a --icons
 alias ll = exa -la --icons
 alias df = lfs -a -s filesystem
 alias gitui = gitui -t macchiato.ron
+alias mold-cargo-build = mold -run cargo build
 
 alias gcfg = go-callvis -nostd -cacheDir=/home/cirno99/graphCache -algo=static .
 # alias cargo-test-nocap = cargo test -- --nocapture

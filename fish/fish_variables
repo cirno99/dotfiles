@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR DOCKER_HOST:unix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock\x1eunix\x3a///run/user/1000/podman/podman\x2esock
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2d\x2dreverse
@@ -31,4 +32,4 @@ SETUVAR fish_pager_color_description:B3A06D
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_user_paths:/home/cirno99/\x2elocal/bin\x1e/home/cirno99/\x2eyarn/bin\x1e/home/cirno99/\x2enpm/bin\x1e/home/cirno99/go/bin\x1e/home/cirno99/\x2eg/go/bin\x1e/home/cirno99/bin\x1e/home/cirno99/\x2ecargo/bin\x1e/home/cirno99/\x2elocal/lib/python3\x2e11/site\x2dpackages
+SETUVAR fish_user_paths:/home/cirno99/\x2elocal/bin\x1e/home/cirno99/\x2eyarn/bin\x1e/home/cirno99/\x2enpm/bin\x1e/home/cirno99/go/bin\x1e/home/cirno99/\x2eg/go/bin\x1e/home/cirno99/bin\x1e/home/cirno99/\x2ecargo/bin\x1e/home/cirno99/\x2elocal/lib/python3\x2e11/site\x2dpackages\x1e/home/cirno99/\x2eproto/bin

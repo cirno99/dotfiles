@@ -19,7 +19,8 @@ layout {
             pane
             pane {
                 cwd "/home/cirno99/Code/company/"
-            }
+                command "nu"
+            } 
         }
         // pane size=1 borderless=true {
         //     plugin location="zellij:compact-bar"

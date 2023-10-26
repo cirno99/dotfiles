@@ -50,9 +50,8 @@ alias mold-cargo-build  "mold -run cargo build"
 
 
 alias exaa "exa -ahbHl --no-user"
-# alias cat "bat"
-alias vim "hx"
-alias helix "hx"
+alias cat "bat --style plain"
+alias vim "helix"
 #alias zld "zellij a || zellij --layout ~/.config/zellij/layouts.yaml"
 # Replace ls with exa
 alias ls="exa --icons"

@@ -44,20 +44,25 @@ alias touch "uu-touch"
 alias uname "uu-uname"
 
 
-alias df  "lfs -a -s filesystem"
+alias df  "dysk -a -s filesystem"
 alias gitui  "gitui -t macchiato.ron"
 alias mold-cargo-build  "mold -run cargo build"
+alias docker "podman"
+alias docker-compose "podman-compose"
 
 
 alias exaa "exa -ahbHl --no-user"
 alias cat "bat --style plain"
 alias vim "helix"
+# alias hx "helix"
+alias helix "hx"
 #alias zld "zellij a || zellij --layout ~/.config/zellij/layouts.yaml"
 # Replace ls with exa
 alias ls="exa --icons"
 alias la='exa -a --icons'
 alias ll='exa -la --icons'
-alias du='diskus -v'
+# alias du='diskus -v'
+alias du='dust'
 alias gu='git status'
 alias ga='git add -A'
 alias gc='git clone'

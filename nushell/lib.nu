@@ -109,7 +109,7 @@ def nipo-live [] {
 }
 
 def bili-live [arg: string] {
-  seam -l bili -i $arg | head -n 1 | xargs mpv
+  seam -l bili -i $arg |grep minihevc/index.m3u8 | head -n 1 | xargs mpv
 }
 
 def wiki-tui [arg: string] {

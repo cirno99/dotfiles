@@ -18,6 +18,8 @@ set -x DOCKER_HOST unix:///run/user/1000/podman/podman.sock
 #set -x PATH /home/cirno99/.npm/bin $PATH
 set -Ua fish_user_paths ~/.local/bin ~/.yarn/bin ~/.npm/bin ~/go/bin ~/bin ~/.cargo/bin
 export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
+export GTK_CSD=0
+export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
 
 function tere
     set --local result (/usr/bin/tere $argv)

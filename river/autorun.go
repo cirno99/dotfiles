@@ -22,9 +22,16 @@ func autorun(mwg *sync.WaitGroup) {
 	cmdList := []*exec.Cmd{
 		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=82055611_薫る六月照る水無月。_UID=2863217_p0.jpg"),
 		// exec.command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/photo_2022-02-27_17-40-50.jpg"),
-		exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=83980769_鯨注意報_UID=8356367_p0.jpg"),
-		exec.Command("dufs", "/home/cirno99/geekdoc/01-专栏课", "--allow-search"),
+		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=83980769_鯨注意報_UID=8356367_p0.jpg"),
+		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=84368199_四_UID=19389056_p0.jpg"),
+		exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=82597614_梅雨隠れの君_UID=2241258_p0.jpg"),
+		exec.Command("dufs", "/home/cirno99/geekdoc/01-专栏课", "--allow-search", "--allow-symlink"),
 		// something I saw others did. I don't know why.
+
+		exec.Command("dufs", "/home/cirno99/Code/Study/sec/PeiQi-WIKI-Book/docs/.vuepress/dist", "--allow-search", "-p", "5001"),
+		exec.Command("dufs", "/home/cirno99/Code/Study/Java-learning/docs/.vitepress/dist", "--allow-search", "-p", "5002"),
+		exec.Command("dufs", "/home/cirno99/Code/Study/JavaGuide/dist", "--allow-search", "-p", "5003"),
+		exec.Command("xrdb", "-load", "~/.Xresources"),
 		exec.Command(
 			"dbus-update-activation-environment",
 			"SEATD_SOCK",
@@ -32,6 +39,7 @@ func autorun(mwg *sync.WaitGroup) {
 			"WAYLAND_DISPLAY",
 			"XDG_SESSION_TYPE",
 			"XDG_CURRENT_DESKTOP",
+			"DBUS_SESSION_BUS_ADDRESS",
 		),
 
 		// notification daemon
@@ -50,15 +58,6 @@ func autorun(mwg *sync.WaitGroup) {
 			"7",
 			"--width",
 			"550",
-		),
-
-		// the layouting engine for river
-		exec.Command(
-			"rivertile",
-			"-view-padding",
-			"03",
-			"-outer-padding",
-			"03",
 		),
 
 		exec.Command(
@@ -108,6 +107,16 @@ func autorun(mwg *sync.WaitGroup) {
 		exec.Command(
 			"kanshi",
 		),
+		exec.Command("river-luatile"),
+
+		// the layouting engine for river
+		// exec.Command(
+		// 	"river-bsp-layout",
+		// 	"--inner-gap",
+		// 	"3",
+		// 	"--outer-gap",
+		// 	"3",
+		// ),
 	}
 
 	// Concurrency stuff

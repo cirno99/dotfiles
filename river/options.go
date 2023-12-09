@@ -26,8 +26,11 @@ func setOptions(mwg *sync.WaitGroup) {
 		exec.Command(RIVERCTL, "set-cursor-warp", "on-output-change"),
 
 		// layout related
-		exec.Command(RIVERCTL, "attach-mode", "bottom"),       // new window's open at the end of stack instead of on top
-		exec.Command(RIVERCTL, "default-layout", "rivertile"), // default layouting engine
+		exec.Command(RIVERCTL, "attach-mode", "bottom"), // new window's open at the end of stack instead of on top
+		// exec.Command(RIVERCTL, "default-layout", "rivertile"), // default layouting engine
+		exec.Command(RIVERCTL, "default-layout", "luatile"), // default layouting engine
+		// exec.Command(RIVERCTL, "default-layout", "bsp-layout"), // default layouting engine
+		// exec.Command(RIVERCTL, SPAWN, "river-luatile"),
 	}
 
 	runner(allCMDs)

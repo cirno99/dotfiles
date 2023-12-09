@@ -12,6 +12,7 @@ const (
 	MAPP     = "map-pointer"
 	SPAWN    = "spawn"
 	RIVERCTL = "riverctl"
+	REPEAT   = "-repeat"
 )
 
 var config, _ = os.UserConfigDir()
@@ -37,7 +38,9 @@ func keyBindings(mwg *sync.WaitGroup) {
 	// tdropAlacritty := "WAYLAND_DISPLAY=no tdrop -mta -h 70% -w 50% alacritty"
 	wezTerm := "WAYLAND_DISPLAY=no wezterm"
 	tdropWezTerm := "WAYLAND_DISPLAY=no tdrop -mta -h 70% -w 50% wezterm"
+	pauseMpv := `echo '{ "command": ["cycle", "pause"] }' | socat - /tmp/mpvsocket`
 	killwaybar := "killall -SIGUSR1 waybar || waybar -c ~/.config/river/waybar_catppuccin/config-river.json  -s ~/.config/river/waybar_catppuccin/river_style.css"
+	kill9waybar := "killall -SIGKILL waybar || waybar -c ~/.config/river/waybar_catppuccin/config-river.json  -s ~/.config/river/waybar_catppuccin/river_style.css"
 	// launcher := "wofi --show drun --style=/home/cirno99/.config/wofi/styles.css"
 	launcher := "fish -c kickoff"
 	netman := "networkmanager_dmenu"
@@ -50,7 +53,7 @@ func keyBindings(mwg *sync.WaitGroup) {
 	waylogout := "wlogout"
 	// List of Keybinings
 	allCMDs := []*exec.Cmd{
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "R", SPAWN, config+"/river/init"),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "R", SPAWN, "/home/cirno99/.config/river/init"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Return", SPAWN, term),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "T", SPAWN, tdropWezTerm),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "backslash", SPAWN, nuterm),
@@ -58,6 +61,8 @@ func keyBindings(mwg *sync.WaitGroup) {
 		//exec.Command(RIVERCTL, MAP, NORMAL, "Super", "W", SPAWN, browser),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "D", SPAWN, launcher),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "B", SPAWN, killwaybar),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "W", SPAWN, pauseMpv),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Control", "B", SPAWN, kill9waybar),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "N", SPAWN, netman),
 		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", SPAWN, swayLock),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "V", SPAWN, clipboardManager),
@@ -85,23 +90,6 @@ func keyBindings(mwg *sync.WaitGroup) {
 
 		// send view to output
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "O", "send-to-output", "next"),
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Comma", "send-to-output", "previous"),
-
-		// resize the main ratio of rivertile
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "H", "send-layout-cmd", "rivertile", "main-ratio -0.05"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "L", "send-layout-cmd", "rivertile", "main-ratio +0.05"),
-
-		// change the amount of views in main in rivertile
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "H", "rivertile", "main-count +1"),
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", "rivertile", "main-count -1"),
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "H","send-layout-cmd",  "rivertile", "main-location top"),
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L","send-layout-cmd",  "rivertile", "main-location left"),
-		// // move views
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt", "H", "move", "left", "100"),
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt", "J", "move", "down", "100"),
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt", "K", "move", "up", "100"),
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt", "L", "move", "right", "100"),
-		//
 
 		// snap views
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Control", "H", "snap", "left"),
@@ -109,21 +97,29 @@ func keyBindings(mwg *sync.WaitGroup) {
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Control", "K", "snap", "up"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Control", "L", "snap", "right"),
 
-		// move views
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Shift", "H", "resize", "horizontal -100"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Shift", "J", "resize", "vertical 100"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Shift", "K", "resize", "vertical -100"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Shift", "L", "resize", "horizontal 100"),
-
 		// toggle layouts
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "F", "toggle-float"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "F", "toggle-fullscreen"),
 
+		// ====================== luatile =============================
+
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "H", "send-layout-cmd", "luatile", "main_ratio_inc(-0.03)"),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "L", "send-layout-cmd", "luatile", "main_ratio_inc(0.03)"),
+		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", "send-layout-cmd", "luatile", "toggle_layout()"),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "C", "send-layout-cmd", "luatile", "set_layout('centered')"),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", "send-layout-cmd", "luatile", "layout_cycle()"),
+
+		// ====================== rivertile =============================
+
+		// resize the main ratio of rivertile
+		// exec.Command(RIVERCTL, MAP, NORMAL, "Super", "H", "send-layout-cmd", "rivertile", "main-ratio -0.05"),
+		// exec.Command(RIVERCTL, MAP, NORMAL, "Super", "L", "send-layout-cmd", "rivertile", "main-ratio +0.05"),
+
 		// Change layout orientation
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Up", "send-layout-cmd", "rivertile", "main-location top"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Right", "send-layout-cmd", "rivertile", "main-location right"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Down", "send-layout-cmd", "rivertile", "main-location bottom"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Left", "send-layout-cmd", "rivertile", "main-location left"),
+		// exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Up", "send-layout-cmd", "rivertile", "main-location top"),
+		// exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Right", "send-layout-cmd", "rivertile", "main-location right"),
+		// exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Down", "send-layout-cmd", "rivertile", "main-location bottom"),
+		// exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Left", "send-layout-cmd", "rivertile", "main-location left"),
 
 		// media keys
 		exec.Command(RIVERCTL, MAP, NORMAL, "None", "XF86AudioMedia", SPAWN, "playerctl play-pause"),

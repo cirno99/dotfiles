@@ -83,6 +83,8 @@ local function stack(args, layout)
 end
 
 local function bspwm(args, layout)
+    args.inner_gaps = layout.inner_gaps
+    args.outer_gaps = layout.outer_gaps
     local revert = function(retval)
         return require("utils").revert(args, retval)
     end
@@ -179,6 +181,8 @@ end
 
 local function centered(args, layout)
     local retval = {}
+    args.inner_gaps = layout.inner_gaps
+    args.outer_gaps = layout.outer_gaps
 
     --
     local height_for_n = function(n)

@@ -1,4 +1,4 @@
 set selection-clipboard clipboard
 set sandbox none
-set first-page-column 1:2
+set first-page-column 1
 map <C-i> recolor

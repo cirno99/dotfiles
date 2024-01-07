@@ -11,12 +11,18 @@ set -x TERM xterm
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x G_MIRROR https://golang.google.cn/dl/
 set -x GOROOT /home/cirno99/.g/go/
+
+set -x CHROME_EXECUTABLE /usr/bin/google-chrome-unstable
+set -x ANDROID_HOME /home/cirno99/Android/Sdk
+set -x REPO_OS_OVERRIDE linux
+
+set -x QUICKJS_WASM_SYS_WASI_SDK_PATH /opt/wasi-sdk
 set -x DOCKER_HOST unix:///run/user/1000/podman/podman.sock
 #set -x PATH /home/cirno99/bin $PATH
 #set -x PATH /home/cirno99/go/bin $PATH
 #set -x PATH /home/cirno99/.yarn/bin $PATH
 #set -x PATH /home/cirno99/.npm/bin $PATH
-set -Ua fish_user_paths ~/.local/bin ~/.yarn/bin ~/.npm/bin ~/go/bin ~/bin ~/.cargo/bin
+set -Ua fish_user_paths ~/.local/bin ~/.yarn/bin ~/.npm/bin ~/go/bin ~/bin ~/.cargo/bin /opt/flutter/bin /opt/dart-sdk/bin $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools ~/.local/share/pnpm /usr/lib/jvm/default
 export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
 export GTK_CSD=0
 export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
@@ -78,3 +84,10 @@ zoxide init fish | source
 # set -x RUSTUP_DIST_SERVER https://mirrors.tuna.tsinghua.edu.cn/rustup
 
 set -gx GOPATH $HOME/go; set -gx GOROOT $HOME/.g/go; set -gx PATH $GOPATH/bin $PATH; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+
+# pnpm
+set -gx PNPM_HOME "/home/cirno99/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

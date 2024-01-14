@@ -12,7 +12,7 @@ def create_left_prompt [] {
 
 def create_right_prompt [] {
     let time_segment = ([
-        (date now | date format '%m/%d/%Y %r')
+        (date now | format date '%m/%d/%Y %r')
     ] | str join)
 
     $time_segment
@@ -90,6 +90,7 @@ if not (which fnm | is-empty) {
 
 
 $env.TERM = 'xterm'
+# $env.TERM = 'foot'
 $env.PROTO_ROOT = '/home/cirno99/.proto'
 $env.DOCKER_HOST = unix:///run/user/1000/podman/podman.sock
 # $env.RUSTUP_UPDATE_ROOT = 'https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup'
@@ -98,6 +99,6 @@ $env.DOCKER_HOST = unix:///run/user/1000/podman/podman.sock
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
 starship init nu | save --force ~/.starship1.nu
-zoxide init nushell | save -f ~/.zoxide1.nu 
+zoxide init nushell | str replace "$env.PWD -- $rest" "$env.PWD -- ...$rest" --all | save -f ~/.zoxide1.nu 
 # generate cmd to batch alias
 # ["wc","chown", "chmod", "date", "mv", "cp", "head", "tail", "rm", "pwd", "more", "mkdir", "du", "df", "kill", "sleep", "touch", "uname"] | each {|command_name| $"alias ($command_name) = uu-($command_name)" } | str join "\n" | save --force ~/.config/nushell/uutils-alias.nu

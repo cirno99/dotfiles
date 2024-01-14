@@ -245,9 +245,6 @@ $env.config = {
   rm: {
     always_trash: false # always act as if -t was given. Can be overridden with -p
   }
-  cd: {
-    # abbreviations: false # allows `cd s/o/f` to expand to `cd some/other/folder`
-  }
   table: {
     mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
     index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
@@ -621,7 +618,7 @@ alias helix = hx
 alias ls = exa --icons
 alias la = exa -a --icons
 alias ll = exa -la --icons
-alias df = lfs -a -s filesystem
+alias df = dysk -a -s filesystem
 alias gitui = gitui -t macchiato.ron
 alias mold-cargo-build = mold -run cargo build
 

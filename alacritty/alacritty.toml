@@ -1,0 +1,69 @@
+live_config_reload = true
+# tabspaces = 4
+
+[colors.bright]
+black = "0x818181"
+blue = "0x20bbfc"
+cyan = "0x4fb8cc"
+green = "0x5fd7af"
+magenta = "0x6855de"
+red = "0xfb007a"
+white = "0xf1f1f1"
+yellow = "0xf3e430"
+
+[colors.normal]
+black = "0x212121"
+blue = "0x008ec4"
+cyan = "0x20a5ba"
+green = "0x10a778"
+magenta = "0x523c79"
+red = "0xc30771"
+white = "0xe0e0e0"
+yellow = "0xa89c14"
+
+[colors.primary]
+background = "0x212121"
+foreground = "0xf1f1f1"
+
+[font]
+size = 14
+
+[font.bold]
+family = "Maple Mono NF"
+style = "Bold"
+
+[font.bold_italic]
+family = "Maple Mono NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "Maple Mono NF"
+style = "Italic"
+
+[font.normal]
+family = "Maple Mono NF"
+style = "Regular"
+
+[scrolling]
+# auto_scroll = true
+# faux_multiplier = 100
+history = 2000
+multiplier = 20
+
+[shell]
+args = ["-l"]
+program = "/usr/local/bin/fish"
+
+[window]
+decorations = "none"
+dynamic_padding = false
+opacity = 0.9
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 120
+lines = 60
+
+[window.padding]
+x = 10
+y = 15

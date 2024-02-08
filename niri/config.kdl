@@ -160,7 +160,7 @@ spawn-at-startup "foot" "-s"
 spawn-at-startup "waybar" "-c" "/home/cirno99/.config/river/waybar_catppuccin/config-river.json" "-s" "/home/cirno99/.config/river/waybar_catppuccin/river_style.css"
 
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=82597614_梅雨隠れの君_UID=2241258_p0.jpg"
-spawn-at-startup  "waybar" "-c" "~/.config/river/waybar_catppuccin/config-river.json" "-s" "~/.config/river/waybar_catppuccin/river_style.css"
+spawn-at-startup  "waybar" "-c" "~/.config/niri/waybar_catppuccin/config-niri.json" "-s" "~/.config/niri/waybar_catppuccin/niri_style.css"
 
 
 spawn-at-startup "dufs" "/home/cirno99/geekdoc/01-专栏课" "-p" "5000" "--allow-search" "--allow-symlink"

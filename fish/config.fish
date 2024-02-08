@@ -14,6 +14,10 @@ set -x GOROOT /home/cirno99/.g/go/
 
 set -x CHROME_EXECUTABLE /usr/bin/google-chrome-unstable
 set -x ANDROID_HOME /home/cirno99/Android/Sdk
+set -x ANDROID_NDK_HOME /home/cirno99/Android/Sdk/ndk/26.1.10909125
+set -x NDK_HOME /home/cirno99/Android/Sdk/ndk/26.1.10909125
+# set -x ANDROID_NDK_HOME /home/cirno99/Android/Sdk/ndk/23.1.7779620
+# set -x NDK_HOME /home/cirno99/Android/Sdk/ndk/23.1.7779620
 set -x REPO_OS_OVERRIDE linux
 
 set -x QUICKJS_WASM_SYS_WASI_SDK_PATH /opt/wasi-sdk
@@ -51,6 +55,7 @@ alias sleep "uu-sleep"
 alias touch "uu-touch"
 alias uname "uu-uname"
 
+alias psthread='ps -T -p'
 
 alias df  "dysk -a -s filesystem"
 alias gitui  "gitui -t macchiato.ron"
@@ -58,6 +63,7 @@ alias mold-cargo-build  "mold -run cargo build"
 alias docker "podman"
 alias docker-compose "podman-compose"
 
+alias http-proxy "export https_proxy=http://127.0.0.1:7891 http_proxy=http://127.0.0.1:7891 all_proxy=socks://127.0.0.1:7890"
 
 alias exaa "exa -ahbHl --no-user"
 alias cat "bat --style plain"
@@ -76,6 +82,9 @@ alias ga='git add -A'
 alias gc='git clone'
 alias gp='git pull'
 alias gck='git checkout'
+
+alias get_idf='. $HOME/.espressif/esp-idf/v5.1.2/export.fish'
+
 starship init fish | source
 zoxide init fish | source
 

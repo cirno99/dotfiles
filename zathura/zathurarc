@@ -1,4 +1,94 @@
-set selection-clipboard clipboard
 set sandbox none
 set first-page-column 1
 map <C-i> recolor
+
+#以宽度自适应打开
+set adjust-open "width"
+
+#字体与字号
+set font "Noto Sans CJK SC Regular 9"
+
+#GUI相关，留空可隐藏底部statusbar
+#set guioptions ""
+
+#只显示文件名，否则显示完整路径
+set window-title-basename true
+
+#中文pdf需将实时搜索设为false 
+set incremental-search false 
+
+#显示右侧进度条
+set show-v-scrollbar true
+
+#粘贴版，鼠标选中即复制
+set selection-clipboard clipboard
+
+#默认高度，像素
+set window-height 1360
+
+#默认宽度
+set window-width 1160
+
+# 每屏显示多少页
+#set advance-pages-per-row true
+#set pages-per-row 1
+
+#key map
+map e scroll half-up
+map w scroll half-down
+
+#Color
+set notification-error-bg       "#282828" # bg
+set notification-error-fg       "#fb4934" # bright:red
+set notification-warning-bg     "#282828" # bg
+set notification-warning-fg     "#fabd2f" # bright:yellow
+set notification-bg             "#282828" # bg
+set notification-fg             "#b8bb26" # bright:green
+
+set completion-bg               "#504945" # bg2
+set completion-fg               "#ebdbb2" # fg
+set completion-group-bg         "#3c3836" # bg1
+set completion-group-fg         "#928374" # gray
+set completion-highlight-bg     "#83a598" # bright:blue
+set completion-highlight-fg     "#504945" # bg2
+
+# Define the color in index mode
+set index-bg                    "#504945" # bg2
+set index-fg                    "#ebdbb2" # fg
+set index-active-bg             "#83a598" # bright:blue
+set index-active-fg             "#504945" # bg2
+
+set inputbar-bg                 "#282828" # bg
+set inputbar-fg                 "#ebdbb2" # fg
+
+set statusbar-bg                "#282828" # bg
+set statusbar-fg                "#ebdbb2" # fg
+
+set highlight-color             "#fabd2f" # bright:yellow
+set highlight-active-color      "#fe8019" # bright:orange
+
+set default-bg                  "#282828" # bg
+set default-fg                  "#ebdbb2" # fg
+set render-loading              true
+set render-loading-bg           "#282828" # bg
+set render-loading-fg           "#ebdbb2" # fg
+
+# Recolor book content's color
+set recolor-lightcolor          "#fffaf0" # bg
+set recolor-darkcolor           "#000000" # fg
+set recolor                     "true"
+# set recolor-keephue             true      # keep original color
+
+set ctermbg=none
+
+#设置背景色
+map <C-1> feedkeys ":set recolor-lightcolor \#002b36<Return>" #午夜背景
+map <C-2> feedkeys ":set recolor-lightcolor \#000000<Return>" #黑绿背景
+map <C-3> feedkeys ":set recolor-lightcolor \#cce8cf<Return>" #草绿
+map <C-4> feedkeys ":set recolor-lightcolor \#ffffed<Return>" #明黄
+map <C-5> feedkeys ":set recolor-lightcolor \#eefaee<Return>" #淡绿
+map <C-6> feedkeys ":set recolor-lightcolor \#c0d3d7<Return>" #仿墨水屏
+#设置字体颜色
+map <A-1> feedkeys ":set recolor-darkcolor \#839496<Return>" #午夜前景
+map <A-2> feedkeys ":set recolor-darkcolor \#00B800<Return>" #黑绿前景
+map <A-3> feedkeys ":set recolor-darkcolor \#111111<Return>" #仿墨水屏黑色

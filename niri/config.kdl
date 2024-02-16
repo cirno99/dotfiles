@@ -3,7 +3,7 @@ debug {
     // wait-for-frame-completion-before-queueing
     // enable-overlay-planes
     // disable-cursor-plane
-    // animation-slowdown 3.0
+    // animation-slowdown 0.7
     // render-drm-device "/dev/dri/renderD129"
 }
 
@@ -56,7 +56,7 @@ output "eDP-1" {
 
     scale 1.0
     // transform "90"
-    position x=0 y=0
+    position x=0 y=840
     // mode "1920x1200"
     // mode "2560x1600@60.002"
     // mode "1280x1024@165.004"
@@ -65,15 +65,16 @@ output "eDP-1" {
 }
 
 output "HDMI-A-1" {
-    // off
+    off
     // scale 2.0
     // transform "90"
 
     // position x=-1920 y=520
     // position x=2560 y=0
 
-    position x=1280 y=-640
-    mode "2560x1440@143.912"
+    position x=0 y=0
+    // mode "1920x1080@60.000"
+    // mode "2560x1440@143.912"
     // mode "2560x1440@119.998"
     // mode "1280x720@60.000"
     // mode "2560x1440"
@@ -103,7 +104,7 @@ output "DP-2" {
 layout {
     focus-ring {
         off
-        width 2
+        // width 2
         // catppuccin-mocha Sapphire
         active-color 116 199 236 255
         // catppuccin-mocha Surface2
@@ -157,10 +158,9 @@ screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d|%H-%M-%S.png"
 
 spawn-at-startup "v2raya" "-a" "127.0.0.1:12107" "--lite"
 spawn-at-startup "foot" "-s"
-spawn-at-startup "waybar" "-c" "/home/cirno99/.config/river/waybar_catppuccin/config-river.json" "-s" "/home/cirno99/.config/river/waybar_catppuccin/river_style.css"
 
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=82597614_梅雨隠れの君_UID=2241258_p0.jpg"
-spawn-at-startup  "waybar" "-c" "~/.config/niri/waybar_catppuccin/config-niri.json" "-s" "~/.config/niri/waybar_catppuccin/niri_style.css"
+spawn-at-startup  "waybar" "-c" "/home/cirno99/.config/niri/waybar_catppuccin/config-niri.json" "-s" "/home/cirno99/.config/niri/waybar_catppuccin/niri_style.css"
 
 
 spawn-at-startup "dufs" "/home/cirno99/geekdoc/01-专栏课" "-p" "5000" "--allow-search" "--allow-symlink"
@@ -229,10 +229,10 @@ binds {
     // Mod+Shift+Up    { focus-monitor-up; }
     // Mod+Shift+Right { focus-monitor-right; }
 
-    // Mod+Shift+Ctrl+M     { move-column-to-monitor-left; }
-    // Mod+Shift+Ctrl+N     { move-column-to-monitor-down; }
-    // Mod+Shift+Ctrl+E     { move-column-to-monitor-up; }
-    // Mod+Shift+Ctrl+I     { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
     // Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     // Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     // Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }

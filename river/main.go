@@ -24,7 +24,6 @@ func main() {
 
 	//autorun
 	go autorun(&mwg)
-
 	// rest of concurrency stuff
 	mwg.Wait()
 

@@ -1,9 +1,9 @@
 [{
 	"gtk-layer-shell": true,
-	"output": "eDP-1",
+	"output": "DP-1",
 	"layer": "top",
 	"modules-left": ["custom/launcher","river/tags","custom/updates","custom/media"],
-	"modules-center": ["clock", "tray","custom/uair"],
+	"modules-center": ["clock", "tray"],
 	"modules-right": ["custom/wallpaper","cpu","custom/disk","memory","temperature","backlight","pulseaudio", "battery"],
 	
 	"pulseaudio": {
@@ -34,28 +34,22 @@
 		"on-scroll-down": "brightnessctl s 1%-",
     "on-click": "brightnessctl s 33%",
 	},
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
+  "battery": {
+      "states": {
+          "good": 95,
+          "warning": 30,
+          "critical": 20
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-icons": ["", "", "", "", ""]
+  },
 	"tray":{
 		"icon-size":18,
 		"spacing": 10
 	},
-    
-  "clock": {
-    "format": "{: %m/%d %H:%M %A}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-  
   "cpu": {
       "interval": 15,
       "format": " {}%",
@@ -109,13 +103,4 @@
         "format": " {}",
         "exec": "~/.config/river/waybar_catppuccin/disk-usage.sh"
   },
-	"custom/uair": {
-    "format": "🍅 {}",
-		"on-click": "~/.config/river/waybar_catppuccin/ctrl-mpv.sh",
-		"on-click-right": "~/.cargo/bin/uairctl next",
-    "exec": "~/.config/river/waybar_catppuccin/exec-uair-mpv.sh",
-	},
-}, {
-    "mode": "hide",
-    "layer": "bottom",
 }]

@@ -34,14 +34,15 @@ func keyBindings(mwg *sync.WaitGroup) {
 	// Default Apps
 	term := "footclient"
 	nuterm := "footclient -e fish"
-	// alacrittyTerm := "WAYLAND_DISPLAY=alacritty alacritty --option font.size=7 &"
+	alacrittyTerm := "alacritty"
 	// tdropAlacritty := "WAYLAND_DISPLAY=no tdrop -mta -h 70% -w 50% alacritty"
-	wezTerm := "WAYLAND_DISPLAY=no wezterm"
+	// wezTerm := "WAYLAND_DISPLAY=no wezterm"
+	// wezTerm := "wezterm"
 	tdropWezTerm := "WAYLAND_DISPLAY=no tdrop -mta -h 70% -w 50% wezterm"
 	pauseMpv := `echo '{ "command": ["cycle", "pause"] }' | socat - /tmp/mpvsocket`
 	killwaybar := "killall -SIGUSR1 waybar || waybar -c ~/.config/river/waybar_catppuccin/config-river.json  -s ~/.config/river/waybar_catppuccin/river_style.css"
 	kill9waybar := "killall -SIGKILL waybar || waybar -c ~/.config/river/waybar_catppuccin/config-river.json  -s ~/.config/river/waybar_catppuccin/river_style.css"
-	// launcher := "wofi --show drun --style=/home/cirno99/.config/wofi/styles.css"
+	wofiLauncher := "wofi --show drun --style=/home/cirno99/.config/wofi/styles.css"
 	launcher := "fish -c kickoff"
 	netman := "networkmanager_dmenu"
 	clipboardManager := "clipman pick -t wofi"
@@ -58,9 +59,10 @@ func keyBindings(mwg *sync.WaitGroup) {
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "Return", SPAWN, term),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "T", SPAWN, tdropWezTerm),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "backslash", SPAWN, nuterm),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Return", SPAWN, wezTerm),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Return", SPAWN, alacrittyTerm),
 		//exec.Command(RIVERCTL, MAP, NORMAL, "Super", "W", SPAWN, browser),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "D", SPAWN, launcher),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Control", "D", SPAWN, wofiLauncher),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "B", SPAWN, killwaybar),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "W", SPAWN, pauseMpv),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Control", "B", SPAWN, kill9waybar),

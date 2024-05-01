@@ -36,4 +36,5 @@ var rosePine = map[string]string{
 	"hlLow":   "21202e",
 	"hlMed":   "403d52",
 	"hlHigh":  "524f67",
+	"gray":    "4d5351",
 }

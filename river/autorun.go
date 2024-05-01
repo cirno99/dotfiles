@@ -48,9 +48,9 @@ func autorun(mwg *sync.WaitGroup) {
 			"--default-timeout",
 			"5000",
 			"--background-color",
-			"#"+rosePine["pine"],
+			"#"+rosePine["gray"],
 			"--border-color",
-			"#"+rosePine["pine"],
+			"#"+rosePine["gray"],
 			"--border-size",
 			"0",
 			"--font",
@@ -100,11 +100,11 @@ func autorun(mwg *sync.WaitGroup) {
 			"pueued",
 		),
 		exec.Command(
-			"clash-verge",
+			"clash-nyanpasu",
 		),
-		exec.Command(
-			"clash-verge",
-		),
+		// exec.Command(
+		// 	"v2raya", "-a", "127.0.0.1:12107", "--lite",
+		// ),
 		// exec.Command(
 		// 	"clash",
 		// ),

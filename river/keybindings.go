@@ -51,7 +51,7 @@ func keyBindings(mwg *sync.WaitGroup) {
 	cycleFullScreenPrev := "riverctl toggle-fullscreen; riverctl focus-view previous; riverctl toggle-fullscreen"
 	grimSelect := "sh /home/cirno99/.config/river/screenshots.sh"
 	wayshot := "grim-cli copy"
-	playBiliVideo := "b2mm $(wl-paste)"
+	ydcvNotify := `notify-send -i terminal "$(bash -c wl-paste | ydcv)"`
 	waylogout := "wlogout"
 	// List of Keybinings
 	allCMDs := []*exec.Cmd{
@@ -111,7 +111,7 @@ func keyBindings(mwg *sync.WaitGroup) {
 		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", "send-layout-cmd", "luatile", "toggle_layout()"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "C", "send-layout-cmd", "luatile", "set_layout('centered')"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", "send-layout-cmd", "luatile", "layout_cycle()"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "V", SPAWN, playBiliVideo),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "T", SPAWN, ydcvNotify),
 
 		// ====================== rivertile =============================
 

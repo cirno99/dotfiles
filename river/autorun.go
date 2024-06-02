@@ -46,7 +46,7 @@ func autorun(mwg *sync.WaitGroup) {
 		// notification daemon
 		exec.Command("mako",
 			"--default-timeout",
-			"5000",
+			"15000",
 			"--background-color",
 			"#"+rosePine["gray"],
 			"--border-color",
@@ -57,6 +57,8 @@ func autorun(mwg *sync.WaitGroup) {
 			"monospace",
 			"--padding",
 			"7",
+			"--height",
+			"3550",
 			"--width",
 			"550",
 		),

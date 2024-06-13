@@ -91,7 +91,6 @@ if not (which fnm | is-empty) {
 
 $env.TERM = 'xterm'
 # $env.TERM = 'foot'
-$env.PROTO_ROOT = '/home/cirno99/.proto'
 $env.DOCKER_HOST = unix:///run/user/1000/podman/podman.sock
 # $env.RUSTUP_UPDATE_ROOT = 'https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup'
 # $env.RUSTUP_DIST_SERVER = 'https://mirrors.tuna.tsinghua.edu.cn/rustup'

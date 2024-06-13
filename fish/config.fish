@@ -6,6 +6,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+fish_add_path ~/.local/share/mise/shims
+
 set -U fish_greeting ""
 set -x TERM xterm
 set -x _JAVA_AWT_WM_NONREPARENTING 1
@@ -28,7 +30,7 @@ set -x G_MIRROR https://golang.google.cn/dl/
 set -gx GOBIN "$HOME/go/bin"
 set -gx PATH "$GOBIN" $PATH
 set -gx GOPATH $HOME/go
-set -gx GOROOT $HOME/.proto/tools/go/1.22.2/
+set -gx GOROOT $HOME/.local/share/mise/installs/go/1.22.4/
 # g-install: do NOT edit, see https://github.com/stefanmaric/g
 
 # pnpm
@@ -38,11 +40,7 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 
-# proto
-set -gx PROTO_HOME "$HOME/.proto"
-set -gx PATH "$PROTO_HOME/shims:$PROTO_HOME/bin" $PATH
-
-set -Ua fish_user_paths ~/.local/bin ~/.yarn/bin ~/.npm/bin ~/.proto/bin ~/bin ~/.cargo/bin /opt/flutter/bin /opt/dart-sdk/bin $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools ~/.local/share/pnpm /usr/lib/jvm/default
+set -Ua fish_user_paths ~/.local/bin ~/.yarn/bin ~/.npm/bin ~/bin ~/.cargo/bin /opt/flutter/bin /opt/dart-sdk/bin $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools ~/.local/share/pnpm /usr/lib/jvm/default
 export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
 export GTK_CSD=0
 export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
@@ -102,6 +100,7 @@ alias get_idf='. $HOME/.espressif/esp-idf/v5.1.2/export.fish'
 
 starship init fish | source
 zoxide init fish | source
+mise activate fish | source
 
 # set -x RUSTUP_UPDATE_ROOT https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
 # set -x RUSTUP_DIST_SERVER https://mirrors.tuna.tsinghua.edu.cn/rustup

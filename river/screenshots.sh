@@ -1,1 +1,4 @@
-grimblast --notify copysave area ~/Pictures/Screenshots/shot-$(date +'%s_screenshot.png') 
+FNAME=~/Pictures/Screenshots/shot-$(date +'%s_screenshot.png') 
+
+grimblast --notify copysave area "$FNAME"
+ksnip -e "$FNAME" &

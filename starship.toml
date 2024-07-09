@@ -26,8 +26,9 @@ show_always = true
 [directory]
 read_only = " 🔒"
 read_only_style = "red"
-truncation_length = 10
+truncation_length = 3
 truncate_to_repo = true
+fish_style_pwd_dir_length = 2
 
 [cmd_duration]
 format = "[$duration ](bold yellow)"
@@ -35,7 +36,7 @@ min_time = 100
 disabled = false
 
 [time]
-disabled = false
+disabled = true
 format = '[|$time|](bold) '
 time_format = "%T"
 utc_time_offset = "+8"

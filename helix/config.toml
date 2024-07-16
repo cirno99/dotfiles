@@ -46,8 +46,8 @@ character = "╎"
 enable = true
 
 [editor.statusline]
-left = ["mode", "spinner", "version-control"]
-center = ["file-name"]
+left = ["mode", "spinner", "version-control", "total-line-numbers", "register"]
+center = ["file-encoding", "file-absolute-path"]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
 separator = "│"
 

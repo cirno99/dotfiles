@@ -18,8 +18,8 @@ swap_tiled_layout name="sidebar_open" {
             //     size "1%"
             // }
             pane name="sidebar" {
-                command "env"
-                args "YAZI_CONFIG_HOME=~/.config/zellij/yazi/sidebar" "yazi"
+                command "nu"
+                args "-e \"$env.YAZI_CONFIG_HOME = ~/.config/zellij/sidebar/; yazi\""
             	size "20%"
             }
             pane name="main" split_direction="vertical" {

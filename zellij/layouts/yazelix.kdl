@@ -17,13 +17,11 @@ layout {
         }
         pane split_direction="vertical" {
             pane name="sidebar" {
-                command "env"
-                args "YAZI_CONFIG_HOME=~/.config/zellij/yazi/sidebar" "yazi"
-            	size "25%"
+                command "bash"
+                args "-c" "env \"YAZI_CONFIG_HOME=~/.config/yazi/sidebar\" yazi"
+            	size "20%"
             }
-            pane name="editor" {
-                command "env"
-                args "helix" "."
+            pane {
                 focus true
             }
         }

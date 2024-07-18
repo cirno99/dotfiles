@@ -1,5 +1,6 @@
 [manager]
-layout         = [ 1, 2, 3 ]
+# layout         = [ 1, 2, 3 ]
+layout         = [ 1, 4, 3 ]
 sort_by        = "modified"
 sort_sensitive = true
 sort_reverse   = true
@@ -20,6 +21,7 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 edit = [
 	{ exec = '$EDITOR "$@"', block = true,  for = "unix" },
 	{ exec = 'code "%*"',    orphan = true, for = "windows" },
+	{ exec = 'zellij edit "$1"', desc = "Open File in a new pane" },
 ]
 image = [
 	{ exec = 'swayimg "$@"',             desc = "Open", for = "linux" },

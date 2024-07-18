@@ -1,3 +1,4 @@
+
 layout {
 
     tab name="service" split_direction="vertical" {
@@ -19,7 +20,7 @@ layout {
             pane
             pane {
                 cwd "/home/cirno99/Code/company/"
-                command "nu"
+                command "fish"
             } 
         }
         // pane size=1 borderless=true {

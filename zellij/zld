@@ -1,2 +1,1 @@
-zellij a || zellij --layout /home/cirno99/.config/zellij/layouts.kdl
-#zellij a || zellij 
+zellij a term || zellij -l /home/cirno99/.config/zellij/layouts/terminals.kdl -s term

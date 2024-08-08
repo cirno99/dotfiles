@@ -44,6 +44,7 @@ func keyBindings(mwg *sync.WaitGroup) {
 	kill9waybar := "killall -SIGKILL waybar || waybar -c ~/.config/river/waybar_catppuccin/config-river.json  -s ~/.config/river/waybar_catppuccin/river_style.css"
 	wofiLauncher := "wofi --show drun --style=/home/cirno99/.config/wofi/styles.css"
 	launcher := "fish -c kickoff"
+	todoLsLauncher := "kickoff --from-file /home/cirno99/kickoff_text"
 	netman := "networkmanager_dmenu"
 	clipboardManager := "clipman pick -t wofi"
 	changeWallpaper := "sh /home/cirno99/.config/river/change_wallpaper.sh"
@@ -51,8 +52,8 @@ func keyBindings(mwg *sync.WaitGroup) {
 	cycleFullScreenPrev := "riverctl toggle-fullscreen; riverctl focus-view previous; riverctl toggle-fullscreen"
 	grimSelect := "sh /home/cirno99/.config/river/screenshots.sh"
 	wayshot := "grim-cli copy"
-	ydcvNotify := `notify-send -i terminal "$(bash -c wl-paste | ydcv)"`
 	waylogout := "wlogout"
+	swayLock := "swaylock -i /home/cirno99/Pictures/wallpapers/pixiv/2020/./♥_PID=79898432_UID=15866498_p0.png"
 	// List of Keybinings
 	allCMDs := []*exec.Cmd{
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "R", SPAWN, "/home/cirno99/.config/river/init"),
@@ -61,13 +62,14 @@ func keyBindings(mwg *sync.WaitGroup) {
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "backslash", SPAWN, nuterm),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "Return", SPAWN, alacrittyTerm),
 		//exec.Command(RIVERCTL, MAP, NORMAL, "Super", "W", SPAWN, browser),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "T", SPAWN, todoLsLauncher),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "D", SPAWN, launcher),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Control", "D", SPAWN, wofiLauncher),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "B", SPAWN, killwaybar),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "W", SPAWN, pauseMpv),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Control", "B", SPAWN, kill9waybar),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "N", SPAWN, netman),
-		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", SPAWN, swayLock),
+		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Alt+Control", "L", SPAWN, swayLock),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "V", SPAWN, clipboardManager),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "E", SPAWN, grimSelect),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "X", SPAWN, waylogout),
@@ -111,7 +113,6 @@ func keyBindings(mwg *sync.WaitGroup) {
 		// exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", "send-layout-cmd", "luatile", "toggle_layout()"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super", "C", "send-layout-cmd", "luatile", "set_layout('centered')"),
 		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "L", "send-layout-cmd", "luatile", "layout_cycle()"),
-		exec.Command(RIVERCTL, MAP, NORMAL, "Super+Shift", "T", SPAWN, ydcvNotify),
 
 		// ====================== rivertile =============================
 

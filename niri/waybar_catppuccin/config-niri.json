@@ -102,7 +102,7 @@
 		"format-icons": ["", "", "", "", ""]
 	  },
 	"custom/media": {
-		"format": "{icon}{}",
+		"format": "{}",
 		"return-type": "json",
 		"on-click-right": "playerctl next",
     "on-click-middle": "playerctl previous",
@@ -120,7 +120,4 @@
         "format": " {}",
         "exec": "~/.config/river/waybar_catppuccin/disk-usage.sh"
   },
-}, {
-    "mode": "hide",
-    "layer": "bottom",
 }]

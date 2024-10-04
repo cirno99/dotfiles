@@ -7,6 +7,10 @@ debug {
     // render-drm-device "/dev/dri/renderD129"
 }
 
+environment {
+    DISPLAY ":0"
+}
+
 input {
     keyboard {
        //  xkb {
@@ -25,7 +29,7 @@ input {
         tap
         // dwt
         // natural-scroll
-        accel-speed 0.2
+        // accel-speed 0.2
         // accel-profile "flat"
         // tap-button-map "left-middle-right"
     }
@@ -38,25 +42,25 @@ input {
 
     tablet {
         // map-to-output "eDP-1"
-        map-to-output "HDMI-A-1"
+        // map-to-output "HDMI-A-1"
     }
 
     // disable-power-key-handling
 }
 
-output "winit" {
-    // scale 2.0
-    // scale 3.0
-    // transform "flipped-90"
-    position x=100 y=200
-}
+// output "winit" {
+//     // scale 2.0
+//     // scale 3.0
+//     // transform "flipped-90"
+//     position x=100 y=200
+// }
 
 output "eDP-1" {
     // off
 
     scale 1.0
     // transform "90"
-    position x=0 y=840
+    position x=0 y=0
     // mode "1920x1200"
     // mode "2560x1600@60.002"
     // mode "1280x1024@165.004"
@@ -65,14 +69,14 @@ output "eDP-1" {
 }
 
 output "HDMI-A-1" {
-    off
+    // off
     // scale 2.0
     // transform "90"
 
-    // position x=-1920 y=520
+    position x=1920 y=0
     // position x=2560 y=0
 
-    position x=0 y=0
+    // position x=0 y=0
     // mode "1920x1080@60.000"
     // mode "2560x1440@143.912"
     // mode "2560x1440@119.998"
@@ -85,7 +89,7 @@ output "HDMI-A-1" {
 }
 
 output "DP-1" {
-    // off
+    off
     position x=1920 y=0
     mode "1920x1280@60.000"
     // mode "800x600@72.188"
@@ -93,11 +97,13 @@ output "DP-1" {
     transform "270"
 }
 output "DP-3" {
+    off
     position x=-1920 y=0
     mode "1920x1080@60.000"
 }
 
 output "DP-2" {
+    off
     // mode "3440x1440@99.982"
 }
 
@@ -156,8 +162,9 @@ screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d|%H-%M-%S.png"
 
 // prefer-no-csd
 
-spawn-at-startup "v2raya" "-a" "127.0.0.1:12107" "--lite"
+spawn-at-startup "FlClash"
 spawn-at-startup "foot" "-s"
+spawn-at-startup "xwayland-satellite"
 
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=82597614_梅雨隠れの君_UID=2241258_p0.jpg"
 spawn-at-startup  "waybar" "-c" "/home/cirno99/.config/niri/waybar_catppuccin/config-niri.json" "-s" "/home/cirno99/.config/niri/waybar_catppuccin/niri_style.css"
@@ -246,16 +253,6 @@ binds {
     // Mod+Shift+Alt+Down  { move-workspace-to-monitor-down; }
     // Mod+Shift+Alt+Up    { move-workspace-to-monitor-up; }
     // Mod+Shift+Alt+Right { move-workspace-to-monitor-right; }
-
-    Mod+Shift+J              { focus-workspace-down; }
-    Mod+Shift+K              { focus-workspace-up; }
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    // Mod+Ctrl+L         { move-column-to-workspace-down; }
-    // Mod+Ctrl+U         { move-column-to-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-
     // Mod+Shift+L         { move-workspace-down; }
     // Mod+Shift+U         { move-workspace-up; }
     // Mod+Shift+Page_Down { move-workspace-down; }
@@ -305,7 +302,7 @@ binds {
     Mod+Ctrl+0       { set-column-width "1920"; }
     Mod+Shift+Ctrl+0 { set-window-height "1080"; }
 
-    // Mod+Space       { switch-layout "next"; }
+    // Mod+O       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Mod+E { screenshot; }

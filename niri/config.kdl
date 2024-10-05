@@ -22,7 +22,7 @@ input {
         repeat-delay 500
         repeat-rate 30
 
-        // track-layout "window"
+        track-layout "global"
     }
 
     touchpad {
@@ -46,6 +46,12 @@ input {
     }
 
     // disable-power-key-handling
+    warp-mouse-to-focus
+    focus-follows-mouse
+    workspace-auto-back-and-forth
+
+
+
 }
 
 // output "winit" {

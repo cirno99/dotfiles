@@ -22,7 +22,7 @@ input {
         repeat-delay 500
         repeat-rate 30
 
-        track-layout "global"
+        // track-layout "window"
     }
 
     touchpad {
@@ -46,12 +46,6 @@ input {
     }
 
     // disable-power-key-handling
-    warp-mouse-to-focus
-    focus-follows-mouse
-    workspace-auto-back-and-forth
-
-
-
 }
 
 // output "winit" {
@@ -97,10 +91,8 @@ output "HDMI-A-1" {
 output "DP-1" {
     off
     position x=1920 y=0
-    mode "1920x1280@60.000"
     // mode "800x600@72.188"
     // mode "100x100"
-    transform "270"
 }
 output "DP-3" {
     off
@@ -175,12 +167,6 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=82597614_梅雨隠れの君_UID=2241258_p0.jpg"
 spawn-at-startup  "waybar" "-c" "/home/cirno99/.config/niri/waybar_catppuccin/config-niri.json" "-s" "/home/cirno99/.config/niri/waybar_catppuccin/niri_style.css"
 
-
-spawn-at-startup "dufs" "/home/cirno99/geekdoc/01-专栏课" "-p" "5000" "--allow-search" "--allow-symlink"
-spawn-at-startup "dufs" "/home/cirno99/Code/Study/sec/PeiQi-WIKI-Book/docs/.vuepress/dist" "--allow-search" "-p" "5001" "--render-index"
-spawn-at-startup "dufs" "/home/cirno99/Code/Study/Java-learning/docs/.vitepress/dist" "--allow-search" "-p" "5002" "--render-index"
-spawn-at-startup "dufs" "/home/cirno99/Code/Study/JavaGuide/dist" "--allow-search" "-p" "5003" "--render-index"
-
 spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store"
 spawn-at-startup "wl-paste" "-p" "-t" "text" "--watch" "clipman" "store" "-P" "store" "~/.local/share/clipman-primary.json"
 
@@ -206,6 +192,8 @@ binds {
     Mod+Ctrl+B { spawn "sh" "/home/cirno99/.config/niri/killwaybar.sh" "9"; }
     Mod+Shift+B { spawn "sh" "/home/cirno99/.config/niri/killwaybar.sh" "10"; }
     Mod+V { spawn "clipman" "pick" "-t" "wofi"; }
+    Mod+Shift+V       { toggle-window-floating; }
+    Mod+Ctrl+V { switch-focus-between-floating-and-tiling; }
 
     XF86AudioRaiseVolume { spawn "pactl" "set-sink-volume" "0" "+3%"; }
     XF86AudioLowerVolume { spawn "pactl" "set-sink-volume" "0" "-3%"; }

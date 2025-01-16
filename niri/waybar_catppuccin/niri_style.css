@@ -16,12 +16,13 @@ window#waybar.hidden {
 
 #window {
 	margin-top: 6px;
+	margin-left: 12px;
+	margin-right: 14px;
 }
 
 #workspaces {
 	margin-top: 6px;
 	margin-left: 12px;
-	margin-right: 14px;
 	font-size: 4px;
 	margin-bottom: 0px;
 	border-radius: 8px;

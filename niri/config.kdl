@@ -11,6 +11,14 @@ environment {
     DISPLAY ":0"
 }
 
+animations {
+    // Uncomment to turn off all animations.
+    off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+}
+
 input {
     keyboard {
        //  xkb {
@@ -311,5 +319,11 @@ binds {
     Mod+X { spawn "wlogout"; }
 
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
 }
 

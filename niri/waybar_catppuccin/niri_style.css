@@ -16,12 +16,6 @@ window#waybar.hidden {
 
 #window {
 	margin-top: 6px;
-	padding-left: 4px;
-	padding-right: 4px;
-	border-radius: 8px;
-	transition: none;
-  color: transparent;
-	background: transparent;
 }
 
 #workspaces {

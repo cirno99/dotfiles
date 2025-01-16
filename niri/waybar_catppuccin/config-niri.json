@@ -6,9 +6,9 @@
 		"modules-left": [
 			"custom/launcher",
 			"niri/workspaces",
-			"niri/window",
 			"custom/updates",
-			"custom/media"
+			"custom/media",
+			"niri/window"
 		],
 		"modules-center": [
 			"clock",
@@ -41,15 +41,16 @@
 			"format": "{icon}",
 			"format-icons": {
 				"browser": "",
+				"code": "@",
 				"discord": "",
 				"chat": "<b></b>"
 			},
 			"all-outputs": true
 		},
 		"niri/window": {
+			"format": "{title}",
 			"separate-outputs": true,
-			"icon": true,
-			"icon-size": 16
+			"icon": true
 		},
 		"network": {
 			"tooltip": false,

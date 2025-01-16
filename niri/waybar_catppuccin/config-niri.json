@@ -43,7 +43,8 @@
 				"browser": "",
 				"discord": "",
 				"chat": "<b></b>"
-			}
+			},
+			"all-outputs": true
 		},
 		"niri/window": {
 			"separate-outputs": true,
@@ -144,6 +145,6 @@
 			"interval": 60,
 			"format": " {}",
 			"exec": "~/.config/river/waybar_catppuccin/disk-usage.sh"
-		},
+		}
 	}
 ]

@@ -296,8 +296,8 @@ binds {
     Mod+Ctrl+0       { set-column-width "1920"; }
     Mod+Shift+Ctrl+0 { set-window-height "1080"; }
 
-    // Mod+O       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
+    Mod+O       { focus-monitor-next; }
+    Mod+Shift+O       { move-column-to-monitor-next; }
 
     Mod+E { screenshot; }
     Mod+Ctrl+E { screenshot-screen; }

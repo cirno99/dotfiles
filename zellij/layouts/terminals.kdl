@@ -19,8 +19,7 @@ layout {
         pane split_direction="vertical" {
             pane
             pane {
-                cwd "/home/cirno99/Code/company/"
-                command "fish"
+                command "nu"
             } 
         }
         // pane size=1 borderless=true {

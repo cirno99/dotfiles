@@ -1,1 +1,1 @@
-zellij a term || zellij -l /home/cirno99/.config/zellij/layouts/terminals.kdl -s term
+zellij a term || zellij -l /home/cirno99/.config/zellij/layouts/terminals.kdl --new-session-with-layout term

@@ -62,7 +62,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static char *tags[] = {"", "", "", "", ""};
+static char *tags[] = {"", "", "", "", "","6", "7", "8", "9"};
 
 static const char* eww[] = { "eww", "open" , "eww", NULL };
 
@@ -144,8 +144,8 @@ static const Key keys[] = {
 	{0,				XF86XK_MonBrightnessDown,   spawn,	{.v = light_down}},
 
     // screenshot fullscreen and cropped
-    {MODKEY|ControlMask,                XK_u,       spawn,          SHCMD("ksnip -c")},
-    {MODKEY,                            XK_u,       spawn,          SHCMD("ksnip -c")},
+    {MODKEY|ControlMask,                XK_e,       spawn,          SHCMD("ksnip -c")},
+    {MODKEY,                            XK_e,       spawn,          SHCMD("ksnip -c")},
 
     { MODKEY,                           XK_x,       spawn,          SHCMD("rofi -show p -modi p:rofi-power-menu") },
     { MODKEY|ShiftMask,                 XK_d,       spawn,          SHCMD("rofi -show drun") },
@@ -239,8 +239,8 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,                 XK_r,       restart,           {0} },
 
     // hide & restore windows
-    { MODKEY,                           XK_e,       hidewin,        {0} },
-    { MODKEY|ShiftMask,                 XK_e,       restorewin,     {0} },
+    { MODKEY,                           XK_u,       hidewin,        {0} },
+    { MODKEY|ShiftMask,                 XK_u,       restorewin,     {0} },
 
     TAGKEYS(                            XK_1,                       0)
     TAGKEYS(                            XK_2,                       1)

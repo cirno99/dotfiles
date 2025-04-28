@@ -137,6 +137,7 @@ local servers = {
   "gopls",
   "eslint",
   "rust_analyzer",
+  "dartls",
 }
 
 vim.lsp.enable(servers)
@@ -203,6 +204,10 @@ vim.lsp.config("lua_ls", {
       },
     },
   },
+})
+
+vim.lsp.config("dartls", {
+  on_attach = custom_on_attach,
 })
 
 vim.lsp.config("dockerls", {

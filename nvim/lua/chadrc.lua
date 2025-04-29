@@ -98,8 +98,8 @@ M.base46 = {
     "notify",
   },
 
-  theme = "catppuccin", ---@diagnostic disable-line
-  theme_toggle = { "catppuccin", "one_light" }, ---@diagnostic disable-line
+  theme = "miss-chadracula", ---@diagnostic disable-line
+  theme_toggle = { "miss-chadracula", "one_light" }, ---@diagnostic disable-line
 
   hl_override = highlights.override,
   hl_add = highlights.add,

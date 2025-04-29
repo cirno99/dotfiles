@@ -411,10 +411,6 @@ return {
     cmd = "Code",
   },
   {
-    "wakatime/vim-wakatime",
-    event = "BufReadPost",
-  },
-  {
     "mfussenegger/nvim-dap",
     cmd = { "DapContinue", "DapStepOver", "DapStepInto", "DapStepOut", "DapToggleBreakpoint" },
     dependencies = {

@@ -138,10 +138,22 @@ local servers = {
   "eslint",
   "rust_analyzer",
   "dartls",
+  "intelephense",
 }
 
 vim.lsp.enable(servers)
 vim.lsp.inlay_hint.enable(true)
+
+vim.lsp.config('intelephense', {
+  on_attach = custom_on_attach,
+  settings = {
+    intelephense = {
+      files = {
+        maxSize = 1000000;
+      };
+    };
+  }
+})
 
 vim.lsp.config('rust_analyzer', {
   on_attach = custom_on_attach,

@@ -1,6 +1,6 @@
 [{
 	"gtk-layer-shell": true,
-	"output": "DP-1",
+	"output": "HDMI-A-1",
 	"layer": "top",
 	"modules-left": ["custom/launcher","river/tags","custom/updates","custom/media"],
 	"modules-center": ["clock", "tray"],

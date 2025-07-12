@@ -25,13 +25,6 @@ func autorun(mwg *sync.WaitGroup) {
 		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=83980769_鯨注意報_UID=8356367_p0.jpg"),
 		// exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=84368199_四_UID=19389056_p0.jpg"),
 		exec.Command("swaybg", "-m", "fill", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/./PID=82597614_梅雨隠れの君_UID=2241258_p0.jpg"),
-		exec.Command("dufs", "/home/cirno99/geekdoc/01-专栏课", "-p", "5000", "--allow-search", "--allow-symlink"),
-		// something I saw others did. I don't know why.
-
-		exec.Command("dufs", "/home/cirno99/Code/Study/sec/PeiQi-WIKI-Book/docs/.vuepress/dist", "--allow-search", "-p", "5001", "--render-index"),
-		exec.Command("dufs", "/home/cirno99/Code/Study/Java-learning/docs/.vitepress/dist", "--allow-search", "-p", "5002", "--render-index"),
-		exec.Command("dufs", "/home/cirno99/Code/Study/JavaGuide/dist", "--allow-search", "-p", "5003", "--render-index"),
-		// exec.Command("dufs", "/home/cirno99/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/share/doc/rust/html/", "--allow-search", "-p", "5004"),
 		exec.Command("xrdb", "-load", "~/.Xresources"),
 		exec.Command(
 			"dbus-update-activation-environment",
@@ -104,28 +97,10 @@ func autorun(mwg *sync.WaitGroup) {
 		exec.Command(
 			"clash-nyanpasu",
 		),
-		// exec.Command(
-		// 	"v2raya", "-a", "127.0.0.1:12107", "--lite",
-		// ),
-		// exec.Command(
-		// 	"clash",
-		// ),
 		exec.Command(
 			"kanshi",
 		),
 		exec.Command("river-luatile"),
-
-		// the layouting engine for river
-		// exec.Command(
-		// 	"river-bsp-layout",
-		// 	"--inner-gap",
-		// 	"3",
-		// 	"--outer-gap",
-		// 	"3",
-		// ),
-		exec.Command(
-			"sh",
-			"/home/cirno99/.config/river/run_anki_sync_server.sh"),
 	}
 
 	// Concurrency stuff

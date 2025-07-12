@@ -139,6 +139,8 @@ local servers = {
   "rust_analyzer",
   "dartls",
   "intelephense",
+  "pyright",
+  "ruff",
 }
 
 vim.lsp.enable(servers)
@@ -153,6 +155,14 @@ vim.lsp.config('intelephense', {
       };
     };
   }
+})
+
+vim.lsp.config('pyright', {
+  on_attach = custom_on_attach,
+})
+
+vim.lsp.config('ruff', {
+  on_attach = custom_on_attach,
 })
 
 vim.lsp.config('rust_analyzer', {

@@ -1,3 +1,0 @@
-(identifier) @variable
-
-":" @operator

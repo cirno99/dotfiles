@@ -1,7 +1,7 @@
 #[url "https://hub.fastgit.xyz/"]
 #	insteadOf = https://github.com/
 [user]
-	email = cirno99fox@foxmail.com
+	email = 1563800293@qq.com
 	name = cirno99
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -17,6 +17,7 @@
 	proxy = http://127.0.0.1:7890
 [core]
 	editor = helix
+    pager = delta
 [diff]
 	external = difft
 	tool = difftastic
@@ -30,3 +31,13 @@
 # `git dft` is less to type than `git difftool`.
 [alias]
 	dft = difftool
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+
+[merge]
+    conflictStyle = zdiff3

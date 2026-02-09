@@ -1,4 +1,0 @@
-; extends
-
-(list
-  (_) @swappable)

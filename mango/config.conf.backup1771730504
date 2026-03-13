@@ -23,5 +23,3 @@ source=./misc.conf
 source=~/.local/share/Themes/current/mango-colors.conf
 
 source=./dms/outputs.conf
-
-source=./dms/cursor.conf

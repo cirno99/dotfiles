@@ -26,7 +26,6 @@ right = [
   "quick_settings",
   "battery",
   "clock",
-  "custom-weather",
   "notifications",
   "custom-power"
 ]
@@ -45,16 +44,16 @@ on_click_right = "systemctl suspend"
 
 [widgets.custom-layout-cycle-HDMI-A-1]
 exec = "sh /home/cirno99/.config/vibepanel/get_layout.sh HDMI-A-1"
-template = "{output}"
+template = "[{output}]"
 tooltip = "HDMI-A-1 Layout Cycle"
-interval = 1
+interval = 5
 on_click = "sh /home/cirno99/.config/vibepanel/layout_cycle.sh HDMI-A-1"
 show_if = "mmsg -g -o | wc -l | xargs -I {} [ {} -eq 2 ]"
 show_if_interval = 300
 
 [widgets.custom-layout-cycle-eDP-1]
 exec = "sh /home/cirno99/.config/vibepanel/get_layout.sh eDP-1"
-template = "{output}"
+template = "[{output}]"
 tooltip = "eDP-1 Layout Cycle"
 interval = 10
 on_click = "sh /home/cirno99/.config/vibepanel/layout_cycle.sh eDP-1"
@@ -80,7 +79,7 @@ show_if_interval = 300
 # See documentation for all widget options.
 
 [theme]
-mode = "dark" # "auto", "dark", "light", "gtk"
+mode = "auto" # "auto", "dark", "light", "gtk"
 #accent = "#adabe0" # "gtk", "none", or hex color
 
 [theme.icons]

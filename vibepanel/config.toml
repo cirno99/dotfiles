@@ -17,7 +17,7 @@ border_radius = 30
 background_opacity = 0.0 # 0.0 = transparent (islands), 1.0 = solid
 
 [widgets]
-left = ["workspaces","custom-layout-cycle-HDMI-A-1","custom-layout-cycle-eDP-1", "window_title"]
+left = ["workspaces", "window_title"]
 center = ["media"]
 right = [
   "tray",
@@ -41,22 +41,6 @@ label = ""
 tooltip = "Power menu"
 on_click = "wlogout"
 on_click_right = "systemctl suspend"
-
-[widgets.custom-layout-cycle-HDMI-A-1]
-exec = "sh /home/cirno99/.config/vibepanel/get_layout.sh HDMI-A-1"
-template = "[{output}]"
-tooltip = "HDMI-A-1 Layout Cycle"
-interval = 5
-on_click = "sh /home/cirno99/.config/vibepanel/layout_cycle.sh HDMI-A-1"
-show_if = "mmsg -g -o | wc -l | xargs -I {} [ {} -eq 2 ]"
-show_if_interval = 300
-
-[widgets.custom-layout-cycle-eDP-1]
-exec = "sh /home/cirno99/.config/vibepanel/get_layout.sh eDP-1"
-template = "[{output}]"
-tooltip = "eDP-1 Layout Cycle"
-interval = 10
-on_click = "sh /home/cirno99/.config/vibepanel/layout_cycle.sh eDP-1"
 
 [widgets.custom-weather]
 exec = "curl -s 'wttr.in/Jieyang?format=1' | sed 's/ //g'"

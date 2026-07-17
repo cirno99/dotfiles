@@ -12,6 +12,7 @@
         .{ "foot", "-s" },
         .{"fcitx5"},
         .{"kanshi"},
+        .{ "mpd-mpris", "-host", "127.0.0.1", "-port", "6602" },
         .{ "sh", "/home/cirno99/.config/kwm/fifo.sh" },
         .{"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"},
         .{"/usr/lib/xdg-desktop-portal-termfilechooser"},
@@ -217,7 +218,7 @@
     // .scroller
     // .centered_master
     // .float
-    .default_layout = .tile,
+    .default_layout = .float,
     .layout = .{
         .tile = .{
             .nmaster = 1,
@@ -695,12 +696,12 @@
                 },
             },
             .{
-                .keysym = "comma",
+                .keysym = "o",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .send_to_output = .{ .direction = .reverse },
+                            .send_to_output = .{ .direction = .forward },
                         },
                     },
                 },
@@ -728,8 +729,8 @@
                 },
             },
             .{
-                .keysym = "e",
-                .modifiers = .{ .mod4 = true, .shift = true },
+                .keysym = "m",
+                .modifiers = .{ .mod4 = true },
                 .event = .{
                     .click = .{
                         .pressed = .toggle_maximize,
@@ -785,7 +786,7 @@
             },
             .{
                 .keysym = "t",
-                .modifiers = .{ .mod4 = true },
+                .modifiers = .{ .mod4 = true, .mod1 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -796,7 +797,7 @@
             },
             .{
                 .keysym = "g",
-                .modifiers = .{ .mod4 = true },
+                .modifiers = .{ .mod4 = true, .mod1 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -807,7 +808,7 @@
             },
             .{
                 .keysym = "d",
-                .modifiers = .{ .mod4 = true },
+                .modifiers = .{ .mod4 = true, .mod1 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -818,7 +819,7 @@
             },
             .{
                 .keysym = "m",
-                .modifiers = .{ .mod4 = true },
+                .modifiers = .{ .mod4 = true, .mod1 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -829,7 +830,7 @@
             },
             .{
                 .keysym = "s",
-                .modifiers = .{ .mod4 = true },
+                .modifiers = .{ .mod4 = true, .mod1 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -840,7 +841,7 @@
             },
             .{
                 .keysym = "u",
-                .modifiers = .{ .mod4 = true },
+                .modifiers = .{ .mod4 = true, .mod1 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{

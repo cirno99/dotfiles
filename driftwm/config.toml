@@ -35,7 +35,7 @@ window_placement = "center"
 # Commands to run at startup (after WAYLAND_DISPLAY is set).
 # Each entry is passed to sh -c, so full shell syntax works (pipes, &&, env vars).
 autostart = [
-  "fcitx5 --replace -d",
+  "swaybg -i /home/cirno99/backup/wallpapers/pixiv/2020/PID=84368199_四_UID=19389056_p0.jpg -m fill",
   "foot -s",
   "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
   "/usr/lib/xdg-desktop-portal-termfilechooser",
@@ -44,6 +44,7 @@ autostart = [
   "xrdb -merge ~/.Xresources",
   "wl-paste --type text --watch clipvault store",
   "wl-paste --type image --watch clipvault store",
+  "fcitx5 --replace -d",
   # "vibepanel"
 ]
 #
@@ -181,7 +182,7 @@ border_color_focused = "#303030"  # focused border. Same default as above —
 [effects]
 blur_radius = 2                # number of Kawase down+up passes (default: 2)
 blur_strength = 1.1            # per-pass texel spread (default: 1.1)
-animate_blur = false           # re-blur every frame when the wallpaper is animated
+animate_blur_fps = 0           # re-blur every frame when the wallpaper is animated
                                  # (expensive; default: false — blur is captured once and
                                  # only refreshed when geometry/camera/static bg change)
 
@@ -196,10 +197,10 @@ animate_blur = false           # re-blur every frame when the wallpaper is anima
 # type = "tile"  # image tiled across the canvas
 # path = "~/Pictures/Wallpapers/tile.png"
 #
-type = "wallpaper"  # single image fixed to viewport (does not scroll/zoom)
-path = "~/backup/wallpapers/pixiv/2020/PID=84368199_四_UID=19389056_p0.jpg"
+# type = "wallpaper"  # single image fixed to viewport (does not scroll/zoom)
+# path = "~/backup/wallpapers/pixiv/2020/PID=84368199_四_UID=19389056_p0.jpg"
 #
-# type = "none"  # render no built-in background (path ignored), so a
+type = "none"  # render no built-in background (path ignored), so a
 #                # wlr-layer-shell wallpaper daemon (swaybg, swww, mpvpaper for live video)
 #                # is the wallpaper. Launch it yourself; see docs/shaders.md.
 
@@ -337,6 +338,7 @@ cache_budget_mb = 128
 "mod+shift+e" = "spawn ~/.config/driftwm/grim-cli copy"
 "mod+v" = "spawn ~/.config/driftwm/rofi-clip"
 "mod+shift+x" = "spawn wlogout"
+"mod+shift+n" = "spawn ~/.config/driftwm/change_wallpaper.sh"
 # Example: built-in window capture (isolated window + shadow) to clipboard
 # "ctrl+Print" = "spawn driftwm msg screenshot window -o - | wl-copy"
 # Example: tap binding — bare modifier chord, fires on release with no key on top
@@ -392,10 +394,10 @@ decoration_fit_snapped = false
 "wheel-scroll" = "zoom"            # mouse wheel on empty canvas → zoom
 
 [mouse.anywhere]
-"mod+left" = "pan-viewport"
-"mod+ctrl+left" = "center-nearest" # direction from drag delta
-"mod+trackpad-scroll" = "pan-viewport"
-"mod+wheel-scroll" = "zoom"
+# "mod+left" = "pan-viewport"
+# "mod+ctrl+left" = "center-nearest" # direction from drag delta
+# "mod+trackpad-scroll" = "pan-viewport"
+# "mod+wheel-scroll" = "zoom"
 
 [gestures]
 # Gesture thresholds — tune for your touchpad size.

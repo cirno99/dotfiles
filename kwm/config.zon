@@ -12,8 +12,8 @@
         .{ "foot", "-s" },
         .{"fcitx5"},
         .{"kanshi"},
-        .{ "mpd-mpris", "-host", "127.0.0.1", "-port", "6602" },
-        .{ "sh", "/home/cirno99/.config/kwm/fifo.sh" },
+        // .{ "sh", "/home/cirno99/.config/kwm/fifo.sh" },
+        .{"/home/cirno99/.config/kwm/fifo"},
         .{"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"},
         .{"/usr/lib/xdg-desktop-portal-termfilechooser"},
         .{ "gnome-keyring-daemon", "--start", "--components=secrets" },
@@ -52,7 +52,7 @@
             },
             .select = .{
                 .fg = 0x444a73ff,
-                .bg = 0xc8d3f5d0,
+                .bg = 0x8787ffd0,
             },
         },
 
@@ -161,7 +161,7 @@
             // set scheme for mode tag
             .{ .area = .{ .mode = null }, .scheme = .{ .normal = .{
                 .fg = 0x444a73ff,
-                .bg = 0xc8d3f5d0,
+                .bg = 0x685ff5d0,
             } } },
         },
     },
@@ -675,24 +675,35 @@
                     },
                 },
             },
-            // .{
-            //     .keysym = "comma",
-            //     .modifiers = .{ .mod4 = true },
-            //     .event = .{
-            //         .click = .{
-            //             .pressed = .{
-            //                 .focus_output_iter = .{ .direction = .reverse },
-            //             },
-            //         },
-            //     },
-            // },
+            .{
+                .keysym = "slash",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "rmpc togglepause" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "comma",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "rmpc prev" },
+                        },
+                    },
+                },
+            },
             .{
                 .keysym = "period",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .send_to_output = .{ .direction = .forward },
+                            .spawn_shell = .{ .cmd = "rmpc next" },
                         },
                     },
                 },

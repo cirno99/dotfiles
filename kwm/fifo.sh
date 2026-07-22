@@ -39,6 +39,12 @@ get_cpu_usage() {
     fi
 }
 
+# 获取内存占用率
+get_memory_usage() {
+    mem_info=$(free -m | awk 'NR==2{printf "%.1f%%", $3/$2*100}')
+    echo "${mem_info}"
+}
+
 # 获取硬盘使用率
 get_disk_usage() {
     # 获取根分区的使用情况
@@ -93,14 +99,15 @@ get_datetime() {
 main_loop() {
     while true; do
         # 获取各个模块的信息
-        # cpu_info="CPU:$(get_cpu_usage)"
+        cpu_info="CPU:$(get_cpu_usage)"
+        mem_info="MEM:$(get_memory_usage)"
         disk_info="DISK:$(get_disk_usage)"
         bat_info="BAT:$(get_battery_status)"
         date_info="$(get_datetime)"
+        music_info="$(playerctl metadata --format "{{ artist }} - {{ title }}")"
         
         # 组合成完整的状态栏字符串
-        # status_bar="${cpu_info} | ${disk_info} | ${bat_info} | ${date_info}"
-        status_bar="${disk_info} | ${bat_info} | ${date_info}"
+        status_bar="${music_info} | ${cpu_info} | ${mem_info} | ${disk_info} | ${bat_info} | ${date_info}"
         
         # 写入FIFO文件
         echo "$status_bar" > "$FIFO_PATH"

@@ -23,6 +23,8 @@
         .{ "wl-paste", "--type", "text", "--watch", "clipvault", "store" },
         .{ "wl-paste", "--type", "image", "--watch", "clipvault", "store" },
         .{ "swaybg", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=84368199_四_UID=19389056_p0.jpg", "-m", "fill" },
+        // .{"mihomo"},
+        // .{ "/usr/bin/meow", "-f", "/home/cirno99/.config/meow/config.yaml" },
     },
 
     // null

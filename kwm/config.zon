@@ -123,6 +123,62 @@
                 .left = .{ .zoom = .{ .swap = false } },
             },
         },
+        // .buttons = null,
+        // set null to disable buttons
+        .buttons = .{
+            .buttons = .{
+                .{
+                    .label = "L",
+                    .click = .{
+                        .left = .{ .spawn = .{ .argv = .{ "light", "-S", "40" } } },
+                    },
+                    .axis = .{
+                        .up = .{ .spawn = .{ .argv = .{ "light", "-A", "5" } } },
+                        .down = .{ .spawn = .{ .argv = .{ "light", "-U", "5" } } },
+                    },
+                },
+                .{
+                    .label = "V",
+                    .click = .{
+                        .left = .{ .spawn = .{ .argv = .{ "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle" } } },
+                    },
+                    .axis = .{
+                        .up = .{ .spawn = .{ .argv = .{ "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+" } } },
+                        .down = .{ .spawn = .{ .argv = .{ "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-" } } },
+                    },
+                },
+                .{
+                    .label = "<<",
+                    .click = .{
+                        .left = .{ .spawn = .{ .argv = .{ "rmpc", "prev" } } },
+                    },
+                    .axis = .{
+                        .up = null,
+                        .down = null,
+                    },
+                },
+                .{
+                    .label = "#",
+                    .click = .{
+                        .left = .{ .spawn = .{ .argv = .{ "rmpc", "togglepause" } } },
+                    },
+                    .axis = .{
+                        .up = .{ .spawn = .{ .argv = .{ "rmpc", "volume", "+5" } } },
+                        .down = .{ .spawn = .{ .argv = .{ "rmpc", "volume", "-5" } } },
+                    },
+                },
+                .{
+                    .label = ">>",
+                    .click = .{
+                        .left = .{ .spawn = .{ .argv = .{ "rmpc", "next" } } },
+                    },
+                    .axis = .{
+                        .up = null,
+                        .down = null,
+                    },
+                },
+            },
+        },
         // set null to disable status part
         .status = .{
             // .data = .{ .text = "^#ff0000ffk^#00ff00ffw^#0000ffffm" }, // .stdin or .{ .fifo = "fifo file path" }, could use ^#RGBA to switch text color, and use ^#! to switch back to default color
@@ -169,6 +225,8 @@
     .single_tagset = false,
 
     .sloppy_focus = true,
+
+    .sloppy_focus_output = true,
 
     // .none
     // .on_focus_changed: warp cursor to the center of window focused
@@ -532,6 +590,33 @@
                     },
                 },
             },
+            .{
+                .keysym = "m",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .toggle_maximize,
+                    },
+                },
+            },
+            .{
+                .keysym = "m",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .toggle_minimize,
+                    },
+                },
+            },
+            .{
+                .keysym = "m",
+                .modifiers = .{ .mod4 = true, .ctrl = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .restore_minimized,
+                    },
+                },
+            },
 
             // default
             // .{
@@ -720,17 +805,6 @@
                 },
             },
             .{
-                .keysym = "m",
-                .modifiers = .{ .mod4 = true, .shift = true },
-                .event = .{
-                    .click = .{
-                        .pressed = .{
-                            .toggle_fullscreen = .{ .in_window = true },
-                        },
-                    },
-                },
-            },
-            .{
                 .keysym = "f",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
@@ -738,15 +812,6 @@
                         .pressed = .{
                             .toggle_fullscreen = .{ .in_window = false },
                         },
-                    },
-                },
-            },
-            .{
-                .keysym = "m",
-                .modifiers = .{ .mod4 = true },
-                .event = .{
-                    .click = .{
-                        .pressed = .toggle_maximize,
                     },
                 },
             },

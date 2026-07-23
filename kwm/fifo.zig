@@ -100,8 +100,13 @@ fn getCpuUsage(buf: []u8) []const u8 {
         }
         if (i < 7) return fmt.bufPrint(buf, "0.00%", .{}) catch "ERR";
 
-        const idle = vals[3];
-        const total = vals[0] + vals[1] + vals[2] + vals[3] + vals[4] + vals[5] + vals[6];
+        var total: u64 = 0;
+        var idle: u64 = 0;
+        for (vals, 0..) |val, idx| {
+            total += val;
+            if (idx == 3) idle += val; // idle
+            if (idx == 4) idle += val; // iowait
+        }
 
         if (cpu_first) {
             cpu_first = false;

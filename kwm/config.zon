@@ -1174,6 +1174,17 @@
                 },
             },
             .{
+                .keysym = "d",
+                .modifiers = .{ .mod4 = true, .ctrl = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "rofi -show drun" },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "Return",
                 .modifiers = .{ .mod4 = true },
                 .event = .{

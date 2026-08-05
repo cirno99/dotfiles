@@ -43,7 +43,7 @@
         // .bottom
         .position = .top,
 
-        .font = "monospace:size=10",
+        .font = "Maple Mono NF:size=10",
 
         .scheme = .{
             .normal = .{
@@ -240,7 +240,7 @@
     // if to remember last floating geometry
     .remember_floating_geometry = false,
 
-    .auto_swallow = true,
+    .auto_swallow = false,
 
     // .top: stack top
     // .bottom: stack bottom
@@ -317,6 +317,8 @@
         },
         .scroller = .{
             .mfact = 0.5,
+            .row_mfact = 0.98, // 新窗口在列内的默认高度比例
+            .mode = .horizontal,
             .inner_gap = 16,
             .outer_gap = 9,
         },
@@ -410,7 +412,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{"wlogout"} },
+                            .spawn = .{ .argv = .{ "rofi", "-show", "p", "-modi", "p:rofi-power-menu" } },
                         },
                     },
                 },
@@ -684,12 +686,23 @@
                 },
             },
             .{
-                .keysym = "l",
+                .keysym = "j",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .focus_iter = .{ .direction = .forward },
+                            .focus_direction = .{ .direction = .down },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "k",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .focus_direction = .{ .direction = .up },
                         },
                     },
                 },
@@ -700,29 +713,18 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .focus_iter = .{ .direction = .reverse },
+                            .focus_direction = .{ .direction = .left },
                         },
                     },
                 },
             },
             .{
-                .keysym = "j",
-                .modifiers = .{ .mod4 = true, .ctrl = true },
+                .keysym = "l",
+                .modifiers = .{ .mod4 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .focus_iter = .{ .direction = .forward, .skip = .floating },
-                        },
-                    },
-                },
-            },
-            .{
-                .keysym = "k",
-                .modifiers = .{ .mod4 = true, .ctrl = true },
-                .event = .{
-                    .click = .{
-                        .pressed = .{
-                            .focus_iter = .{ .direction = .reverse, .skip = .floating },
+                            .focus_direction = .{ .direction = .right },
                         },
                     },
                 },
@@ -733,7 +735,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .swap = .{ .direction = .forward },
+                            .swap_direction = .{ .direction = .down },
                         },
                     },
                 },
@@ -744,11 +746,77 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .swap = .{ .direction = .reverse },
+                            .swap_direction = .{ .direction = .up },
                         },
                     },
                 },
             },
+            .{
+                .keysym = "h",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .swap_direction = .{ .direction = .left },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "l",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .swap_direction = .{ .direction = .right },
+                        },
+                    },
+                },
+            },
+            // .{
+            //     .keysym = "j",
+            //     .modifiers = .{ .mod4 = true, .shift = true },
+            //     .event = .{
+            //         .click = .{
+            //             .pressed = .{
+            //                 .swap = .{ .direction = .down },
+            //             },
+            //         },
+            //     },
+            // },
+            // .{
+            //     .keysym = "k",
+            //     .modifiers = .{ .mod4 = true, .shift = true },
+            //     .event = .{
+            //         .click = .{
+            //             .pressed = .{
+            //                 .swap = .{ .direction = .up },
+            //             },
+            //         },
+            //     },
+            // },
+            // .{
+            //     .keysym = "h",
+            //     .modifiers = .{ .mod4 = true, .shift = true },
+            //     .event = .{
+            //         .click = .{
+            //             .pressed = .{
+            //                 .swap = .{ .direction = .left },
+            //             },
+            //         },
+            //     },
+            // },
+            // .{
+            //     .keysym = "l",
+            //     .modifiers = .{ .mod4 = true, .shift = true },
+            //     .event = .{
+            //         .click = .{
+            //             .pressed = .{
+            //                 .swap = .{ .direction = .right },
+            //             },
+            //         },
+            //     },
+            // },
             .{
                 .keysym = "o",
                 .modifiers = .{ .mod4 = true },
@@ -1047,6 +1115,28 @@
                 },
             },
             .{
+                .keysym = "bracketright",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .modify_scroller_mode = .{ .mode = .vertical },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "bracketleft",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .modify_scroller_mode = .{ .mode = .horizontal },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "j",
                 .modifiers = .{ .mod4 = true, .mod1 = true },
                 .event = .{
@@ -1161,14 +1251,13 @@
                     },
                 },
             },
-
             .{
                 .keysym = "d",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "kickoff" },
+                            .spawn_shell = .{ .cmd = "rofi -show drun" },
                         },
                     },
                 },
@@ -1179,7 +1268,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "rofi -show drun" },
+                            .spawn_shell = .{ .cmd = "rofi -show run" },
                         },
                     },
                 },

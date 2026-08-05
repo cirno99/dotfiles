@@ -1,0 +1,11 @@
+.titlebar, .css, headerbar {
+  background-image:none;
+  background-color:transparent;
+  margin-top:-100px;
+  margin-bottom:50px;
+}
+
+headerbar.default-decoration {
+    margin-bottom: 50px;
+    margin-top: -100px;
+}

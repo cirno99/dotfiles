@@ -3,7 +3,7 @@ set -e
 
 if ! test $(pgrep slurp); then
   ACTION=$1
-  TMP=/tmp/screen.png 
+  TMP=~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png 
 
   case $ACTION in 
 

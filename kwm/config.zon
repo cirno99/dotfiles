@@ -23,8 +23,6 @@
         .{ "wl-paste", "--type", "text", "--watch", "clipvault", "store" },
         .{ "wl-paste", "--type", "image", "--watch", "clipvault", "store" },
         .{ "swaybg", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=84368199_四_UID=19389056_p0.jpg", "-m", "fill" },
-        // .{"mihomo"},
-        // .{ "/usr/bin/meow", "-f", "/home/cirno99/.config/meow/config.yaml" },
     },
 
     // null
@@ -189,6 +187,18 @@
             },
         },
 
+        .systray = .{
+            .enabled = true,
+            // icon size in logical pixels; 0 means fill the bar height
+            .icon_size = 20,
+            .spacing = 2,
+            .click = .{
+                .left = .activate,
+                .right = .context_menu,
+                .middle = .secondary_activate,
+            },
+        },
+
         // override colors
         .override_colors = .{
             // areas:
@@ -317,7 +327,7 @@
         },
         .scroller = .{
             .mfact = 0.5,
-            .row_mfact = 0.98, // 新窗口在列内的默认高度比例
+            .row_mfact = 0.95, // 新窗口在列内的默认高度比例
             .mode = .horizontal,
             .inner_gap = 16,
             .outer_gap = 9,
@@ -1092,6 +1102,18 @@
             .{ .keysym = "8", .modifiers = .{ .mod4 = true, .ctrl = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .toggle_window_tag = .{ .mask = 0b10000000 } } } } },
             .{ .keysym = "9", .modifiers = .{ .mod4 = true, .ctrl = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .toggle_window_tag = .{ .mask = 0b100000000 } } } } },
 
+            // focus the window of the Nth column in the scroller layout
+            .{ .keysym = "0", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 0 } } } } },
+            .{ .keysym = "1", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 1 } } } } },
+            .{ .keysym = "2", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 2 } } } } },
+            .{ .keysym = "3", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 3 } } } } },
+            .{ .keysym = "4", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 4 } } } } },
+            .{ .keysym = "5", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 5 } } } } },
+            .{ .keysym = "6", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 6 } } } } },
+            .{ .keysym = "7", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 7 } } } } },
+            .{ .keysym = "8", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 8 } } } } },
+            .{ .keysym = "9", .modifiers = .{ .mod1 = true }, .event = .{ .click = .{ .pressed = .{ .focus_scroller_column = .{ .column = 9 } } } } },
+
             .{
                 .keysym = "l",
                 .modifiers = .{ .mod4 = true },
@@ -1372,8 +1394,8 @@
         .{ .app_id = .{ .str = "DesktopEditors" }, .floating = true },
         .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
         .{ .app_id = .{ .str = "google-chrome" }, .tag = 0b01, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.4 },
-        .{ .app_id = .{ .str = "footclient" }, .is_terminal = true, .scroller_mfact = 0.4 },
+        .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.3 },
+        .{ .app_id = .{ .str = "footclient" }, .is_terminal = true, .scroller_mfact = 0.3 },
     },
 
     // output rules

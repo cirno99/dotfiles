@@ -86,11 +86,11 @@ mod4-Return = { type = "exec", exec = "footclient" }
 mod4-shift-Return = { type = "exec", exec = "ghostty" }
 mod4-shift-d = { type = "exec", exec = ["rofi", "-show", "drun"] }
 mod4-ctrl-d = { type = "exec", exec = ["rofi", "-show", "run"] }
-mod4-v = { type = "exec", exec = ["/home/cirno99/.config/kwm/rofi-clip"] }
-mod4-e = { type = "exec", exec = ["/home/cirno99/.config/kwm/grim-cli", "select-copy"] }
-mod4-shift-n = { type = "exec", exec = ["/home/cirno99/.config/kwm/change_wallpaper.sh"] }
+mod4-v = { type = "exec", exec = ["/home/cirno99/.config/jay/rofi-clip"] }
+mod4-e = { type = "exec", exec = ["/home/cirno99/.config/jay/grim-cli", "select-copy"] }
+mod4-shift-n = { type = "exec", exec = ["/home/cirno99/.config/jay/change_wallpaper.sh"] }
 mod4-x = { type = "exec", exec = ["rofi", "-show", "p", "-modi", "p:rofi-power-menu"] }
-mod4-shift-p = { type = "exec", exec = ["/home/cirno99/.config/kwm/toggle-screens.sh"] }
+mod4-shift-p = { type = "exec", exec = ["/home/cirno99/.config/jay/toggle-screens.sh"] }
 
 # 音乐控制（kwm: mod4 + shift + / , .）
 mod4-shift-slash = { type = "exec", exec = ["rmpc", "togglepause"] }

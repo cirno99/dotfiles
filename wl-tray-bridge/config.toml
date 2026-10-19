@@ -1,0 +1,28 @@
+# wl-tray-bridge 配置：与 jay 的深蓝紫灰底、浅蓝紫高亮 bar 保持一致。
+
+scale = 1.0
+theme = "Hicolor"
+
+[icon]
+# SVG 托盘图标重着色为白色，避免在黑色 bar 上看不清
+color = "#f5f2fbff"
+
+[menu]
+font = "Maple Mono NF 10"
+color = "#f5f2fbff"
+background-color = "#221d34f2"
+hover-color = "#ffffffff"
+hover-background-color = "#7d72cfff"
+disabled-color = "#8f86a8ff"
+border-color = "#7d72cfff"
+border-width = 1.0
+padding = 5.0
+right-to-left = true
+
+[tooltip]
+font = "Maple Mono NF 10"
+color = "#f5f2fbff"
+background-color = "#221d34f2"
+border-color = "#7d72cfff"
+border-width = 1.0
+padding = 2.0

@@ -1,0 +1,197 @@
+keymap = """
+    xkb_keymap {
+        xkb_keycodes { include "evdev+aliases(qwerty)" };
+        xkb_types    { include "complete"              };
+        xkb_compat   { include "complete"              };
+        xkb_symbols  { include "pc+us+inet(evdev)"     };
+    };
+    """
+
+# 显式启用 Vulkan 渲染。jay 默认已经是 Vulkan；这里写死以便确认，
+# 且与本机的 AMD RADV 驱动对应。
+gfx-api = "Vulkan"
+
+# 默认隐藏窗口标题栏；mod4-t 仍可临时切换。
+show-titles = false
+
+# 与 ~/.config/kwm/config.zon 的 startup_cmds 对齐。
+# 状态栏改为 [status] 直接运行 status.sh，不再使用 /tmp/dwm.fifo。
+# wl-tray-bridge 由本地源码编译到 ~/.local/bin，提供 SNI 托盘图标。
+on-graphics-initialized = [
+    { type = "exec", exec = ["foot", "-s"] },
+    { type = "exec", exec = "kanshi" },
+    { type = "exec", exec = "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" },
+    { type = "exec", exec = ["gnome-keyring-daemon", "--start", "--components=secrets"] },
+    { type = "exec", exec = ["gsettings", "set", "org.gnome.desktop.interface", "color-scheme", "prefer-dark"] },
+    { type = "exec", exec = ["gsettings", "set", "org.gnome.desktop.interface", "gtk-theme", "Adwaita-dark"] },
+    { type = "exec", exec = ["xrdb", "-merge", "/home/cirno99/.Xresources"] },
+    { type = "exec", exec = ["wl-paste", "--type", "text", "--watch", "clipvault", "store"] },
+    { type = "exec", exec = ["wl-paste", "--type", "image", "--watch", "clipvault", "store"] },
+    { type = "exec", exec = ["swaybg", "-i", "/home/cirno99/backup/wallpapers/pixiv/2020/PID=84368199_四_UID=19389056_p0.jpg", "-m", "fill"] },
+    { type = "exec", exec = ["mpd-mpris", "-host", "127.0.0.1", "-port", "6602"] },
+    { type = "exec", exec = "fcitx5" },
+    { type = "exec", exec = "/home/cirno99/.local/bin/wl-tray-bridge" },
+]
+
+# jay 默认只给未沙箱客户端 layer-shell 和 drm-lease。
+# 下面这些客户端需要额外能力，否则自动启动/快捷键会静默失败。
+[[clients]]
+match.comm = "wl-paste"
+capabilities = ["data-control"]
+
+[[clients]]
+match.comm = "wl-copy"
+capabilities = ["data-control"]
+
+[[clients]]
+match.comm = "grim"
+capabilities = ["screencopy"]
+
+[[clients]]
+match.comm = "fcitx5"
+capabilities = ["input-method", "virtual-keyboard", "data-control", "layer-shell"]
+
+[shortcuts]
+# 窗口焦点（kwm: mod4 + h/j/k/l）
+mod4-h = "focus-left"
+mod4-j = "focus-down"
+mod4-k = "focus-up"
+mod4-l = "focus-right"
+
+# 窗口交换/移动（kwm: mod4 + shift + h/j/k/l）
+mod4-shift-h = "move-left"
+mod4-shift-j = "move-down"
+mod4-shift-k = "move-up"
+mod4-shift-l = "move-right"
+
+# 窗口与合成器控制
+mod4-shift-q = "close"
+mod4-f = "toggle-fullscreen"
+mod4-shift-f = "toggle-floating"
+mod4-b = "toggle-bar"
+mod4-t = "toggle-titles"
+mod4-shift-r = "reload-config-toml"
+# kwm 的 toggle_maximize 在 jay 中最接近 toggle-mono
+mod4-m = "toggle-mono"
+
+# 布局切换：jay 没有 kwm 的命名布局，只有分割方向 + mono 堆叠。
+# toggle-split 在当前容器的水平/垂直分割之间切换。
+mod4-shift-t = "toggle-split"
+# 新建水平/垂直分割（下一个窗口按该方向放置）。
+mod4-ctrl-h = "split-horizontal"
+mod4-ctrl-v = "split-vertical"
+
+# 应用启动（与 kwm 的 spawn 绑定一致）
+mod4-Return = { type = "exec", exec = "footclient" }
+mod4-shift-Return = { type = "exec", exec = "ghostty" }
+mod4-shift-d = { type = "exec", exec = ["rofi", "-show", "drun"] }
+mod4-ctrl-d = { type = "exec", exec = ["rofi", "-show", "run"] }
+mod4-v = { type = "exec", exec = ["/home/cirno99/.config/kwm/rofi-clip"] }
+mod4-e = { type = "exec", exec = ["/home/cirno99/.config/kwm/grim-cli", "select-copy"] }
+mod4-shift-n = { type = "exec", exec = ["/home/cirno99/.config/kwm/change_wallpaper.sh"] }
+mod4-x = { type = "exec", exec = ["rofi", "-show", "p", "-modi", "p:rofi-power-menu"] }
+mod4-shift-p = { type = "exec", exec = ["/home/cirno99/.config/kwm/toggle-screens.sh"] }
+
+# 音乐控制（kwm: mod4 + shift + / , .）
+mod4-shift-slash = { type = "exec", exec = ["rmpc", "togglepause"] }
+mod4-shift-comma = { type = "exec", exec = ["rmpc", "prev"] }
+mod4-shift-period = { type = "exec", exec = ["rmpc", "next"] }
+
+# 工作区 1-9（对应 kwm 的 tag 1-9；kwm 的 0=全部 tag 在 jay 中没有等价物）
+mod4-1 = { type = "show-workspace", name = "1" }
+mod4-2 = { type = "show-workspace", name = "2" }
+mod4-3 = { type = "show-workspace", name = "3" }
+mod4-4 = { type = "show-workspace", name = "4" }
+mod4-5 = { type = "show-workspace", name = "5" }
+mod4-6 = { type = "show-workspace", name = "6" }
+mod4-7 = { type = "show-workspace", name = "7" }
+mod4-8 = { type = "show-workspace", name = "8" }
+mod4-9 = { type = "show-workspace", name = "9" }
+
+mod4-shift-1 = { type = "move-to-workspace", name = "1" }
+mod4-shift-2 = { type = "move-to-workspace", name = "2" }
+mod4-shift-3 = { type = "move-to-workspace", name = "3" }
+mod4-shift-4 = { type = "move-to-workspace", name = "4" }
+mod4-shift-5 = { type = "move-to-workspace", name = "5" }
+mod4-shift-6 = { type = "move-to-workspace", name = "6" }
+mod4-shift-7 = { type = "move-to-workspace", name = "7" }
+mod4-shift-8 = { type = "move-to-workspace", name = "8" }
+mod4-shift-9 = { type = "move-to-workspace", name = "9" }
+
+# kwm 的 floating 模式：ctrl+mod4+f 进入，Escape 退出。
+ctrl-mod4-f = { type = "push-mode", name = "floating" }
+
+# VT 切换（kwm 由底层处理；jay 需要显式绑定）
+ctrl-alt-F1 = { type = "switch-to-vt", num = 1 }
+ctrl-alt-F2 = { type = "switch-to-vt", num = 2 }
+ctrl-alt-F3 = { type = "switch-to-vt", num = 3 }
+ctrl-alt-F4 = { type = "switch-to-vt", num = 4 }
+ctrl-alt-F5 = { type = "switch-to-vt", num = 5 }
+ctrl-alt-F6 = { type = "switch-to-vt", num = 6 }
+ctrl-alt-F7 = { type = "switch-to-vt", num = 7 }
+ctrl-alt-F8 = { type = "switch-to-vt", num = 8 }
+ctrl-alt-F9 = { type = "switch-to-vt", num = 9 }
+ctrl-alt-F10 = { type = "switch-to-vt", num = 10 }
+ctrl-alt-F11 = { type = "switch-to-vt", num = 11 }
+ctrl-alt-F12 = { type = "switch-to-vt", num = 12 }
+
+# kwm 的 zoom、布局切换、tag 多选、前后 tag、master/mfact/gap、
+# scroller、canvas、最小化/恢复、sticky、swallow、贴边、passthrough 等未逐项模拟。
+
+[modes."floating".shortcuts]
+Escape = "pop-mode"
+# 避免在模式内重复 push 自己
+ctrl-mod4-f = "none"
+# kwm 的 shift+方向键是贴边；jay 没有 snap，显式解绑以免触发顶层的 move-*
+mod4-shift-h = "none"
+mod4-shift-j = "none"
+mod4-shift-k = "none"
+mod4-shift-l = "none"
+
+[modes."floating".complex-shortcuts]
+# 移动浮动窗口：同时平移两条边
+mod4-h = { action = { type = "resize", dx1 = -10, dx2 = -10 }, repeat = true }
+mod4-l = { action = { type = "resize", dx1 = 10, dx2 = 10 }, repeat = true }
+mod4-j = { action = { type = "resize", dy1 = 10, dy2 = 10 }, repeat = true }
+mod4-k = { action = { type = "resize", dy1 = -10, dy2 = -10 }, repeat = true }
+
+# 调整浮动窗口大小：只移动右/下边
+ctrl-mod4-h = { action = { type = "resize", dx2 = -10 }, repeat = true }
+ctrl-mod4-l = { action = { type = "resize", dx2 = 10 }, repeat = true }
+ctrl-mod4-k = { action = { type = "resize", dy2 = -10 }, repeat = true }
+ctrl-mod4-j = { action = { type = "resize", dy2 = 10 }, repeat = true }
+
+[theme]
+# bar 整体：深蓝紫灰而不是纯黑，alpha 0xb8 让背景更透
+bar-bg-color = "#221d34b8"
+# 状态栏文字：白色
+bar-status-text-color = "#f5f2fb"
+# 当前工作区：浅蓝紫高亮底 + 白字
+focused-title-bg-color = "#7d72cfe6"
+focused-title-text-color = "#ffffff"
+# 非当前工作区：透明背景 + 淡白字
+unfocused-title-bg-color = "#00000000"
+unfocused-title-text-color = "#e6e0f0"
+show-window-icons = true
+window-icons-grayscale = false
+# Pango 语法是“字体族 字号”；写成 :size=8 会被当成字体族名并回退到更大的默认字号。
+bar-font = "Maple Mono NF 8"
+# 注意：jay 的 bar 工作区标签复用窗口标题颜色，窗口标题栏也会使用这套配色。
+
+[status]
+format = "plain"
+exec = ["stdbuf", "-oL", "/home/cirno99/.config/jay/status.sh"]
+
+[[outputs]]
+name = "left"
+match.connector = "HDMI-A-1"
+scale = 1
+x = 0
+y = 0
+
+[[outputs]]
+name = "right"
+match.connector = "eDP-1"
+scale = 1.25
+x = 2560
+y = 0

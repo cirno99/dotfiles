@@ -71,8 +71,9 @@ mod4-shift-f = "toggle-floating"
 mod4-b = "toggle-bar"
 mod4-t = "toggle-titles"
 mod4-shift-r = "reload-config-toml"
-# kwm 的 toggle_maximize 在 jay 中最接近 toggle-mono
-mod4-m = "toggle-mono"
+# kwm 的 toggle_maximize 在 jay 中最接近 toggle-mono；
+# mod4-m 现在给媒体菜单，toggle-mono 移到 mod4-shift-m。
+mod4-m = { type = "exec", exec = ["/home/cirno99/.config/jay/rofi-media"] }
 
 # 布局切换：jay 没有 kwm 的命名布局，只有分割方向 + mono 堆叠。
 # toggle-split 在当前容器的水平/垂直分割之间切换。
@@ -96,6 +97,9 @@ mod4-shift-p = { type = "exec", exec = ["/home/cirno99/.config/jay/toggle-screen
 mod4-shift-slash = { type = "exec", exec = ["rmpc", "togglepause"] }
 mod4-shift-comma = { type = "exec", exec = ["rmpc", "prev"] }
 mod4-shift-period = { type = "exec", exec = ["rmpc", "next"] }
+
+# 媒体菜单改用 mod4-m；toggle-mono 从 mod4-m 移到这里
+mod4-shift-m = "toggle-mono"
 
 # 工作区 1-9（对应 kwm 的 tag 1-9；kwm 的 0=全部 tag 在 jay 中没有等价物）
 mod4-1 = { type = "show-workspace", name = "1" }

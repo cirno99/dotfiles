@@ -1,0 +1,133 @@
+#!/bin/bash
+
+# rofi 媒体控制菜单：rmpc 播放控制、MPD 音量、全局音量。
+# 绑定在 config.toml 的 mod4-shift-m；菜单保持打开，Esc 退出。
+
+set -u
+
+STEP=5
+MPC=(mpc -h 127.0.0.1 -p 6602)
+
+mpd_volume() {
+    rmpc volume 2>/dev/null || printf '?'
+}
+
+# MPD 只有在输出流打开时才有混音器；stop 之后 status 里的 volume 是 n/a。
+mpd_has_mixer() {
+    "${MPC[@]}" status 2>/dev/null | grep -q '^volume:[[:space:]]*[0-9]'
+}
+
+sys_volume() {
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null |
+        awk '{ printf "%d", $2 * 100 }'
+}
+
+sys_muted() {
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q '\[MUTED\]'
+}
+
+now_playing() {
+    "${MPC[@]}" current 2>/dev/null
+}
+
+pango_escape() {
+    sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'
+}
+
+# --status 用于手动检查各音量来源，不经过 rofi。
+if [ "${1:-}" = "--status" ]; then
+    printf 'mpd_volume=%s\n' "$(mpd_volume)"
+    printf 'mpd_mixer=%s\n' "$(mpd_has_mixer && echo yes || echo no)"
+    printf 'sys_volume=%s\n' "$(sys_volume)"
+    printf 'sys_muted=%s\n' "$(sys_muted && echo yes || echo no)"
+    printf 'track=%s\n' "$(now_playing)"
+    exit 0
+fi
+
+row=0
+while :; do
+    mpd_pct=$(mpd_volume)
+    if mpd_has_mixer; then
+        mpd_label="${mpd_pct}%"
+    else
+        mpd_label="未播放"
+    fi
+
+    sys_pct=$(sys_volume)
+    sys_pct=${sys_pct:-?}
+    if sys_muted; then
+        sys_label="${sys_pct}% 已静音"
+    else
+        sys_label="${sys_pct}%"
+    fi
+
+    labels=(
+        "播放 / 暂停"
+        "下一首"
+        "上一首"
+        "MPD 音量  +${STEP}%   [${mpd_label}]"
+        "MPD 音量  -${STEP}%   [${mpd_label}]"
+        "全局音量 +${STEP}%   [${sys_label}]"
+        "全局音量 -${STEP}%   [${sys_label}]"
+        "全局静音切换          [${sys_label}]"
+        "关闭菜单"
+    )
+
+    track=$(now_playing)
+    if [ -n "$track" ]; then
+        mesg="正在播放: $(printf '%s' "$track" | pango_escape)"
+    else
+        mesg="MPD 未播放"
+    fi
+
+    choice=$(
+        printf '%s\n' "${labels[@]}" |
+            rofi -dmenu -i -no-custom -lines 9 -selected-row "$row" \
+                -p "媒体" -font "Maple Mono NF 11" \
+                -theme /home/cirno99/.config/jay/rofi-media.rasi -mesg "$mesg"
+    )
+    [ -z "$choice" ] && exit 0
+
+    # 用标签前缀分发动作，避免依赖 rofi 的选中行下标。
+    case "$choice" in
+        "播放 / 暂停")
+            row=0
+            rmpc togglepause
+            ;;
+        "下一首")
+            row=1
+            rmpc next
+            ;;
+        "上一首")
+            row=2
+            rmpc prev
+            ;;
+        "MPD 音量  +${STEP}%"*)
+            row=3
+            if mpd_has_mixer; then
+                rmpc volume "+${STEP}"
+            fi
+            ;;
+        "MPD 音量  -${STEP}%"*)
+            row=4
+            if mpd_has_mixer; then
+                rmpc volume "-${STEP}"
+            fi
+            ;;
+        "全局音量 +${STEP}%"*)
+            row=5
+            wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ "${STEP}%+"
+            ;;
+        "全局音量 -${STEP}%"*)
+            row=6
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ "${STEP}%-"
+            ;;
+        "全局静音切换"*)
+            row=7
+            wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+            ;;
+        "关闭菜单")
+            exit 0
+            ;;
+    esac
+done

@@ -1,0 +1,13 @@
+/* jay 全局 rofi 配色：深紫半透明底 + 浅蓝紫高亮。 */
+
+* {
+    bg-col: #221d34eb;
+    bg-col-light: #2b2542f2;
+    border-col: #b9aef766;
+    selected-col: #8f84e0e6;
+    blue: #8f84e0e6;
+    fg-col: #f5f2fb;
+    fg-col2: #ffffff;
+    grey: #b9b3d0;
+    width: 600;
+}

@@ -1,0 +1,92 @@
+/* jay 媒体菜单主题：沿用 bar 的深紫底与浅蓝紫高亮。 */
+
+* {
+    bg: #221d34eb;
+    fg: #f5f2fb;
+    fg-dim: #b9b3d0;
+    accent: #8f84e0e6;
+    accent-border: #b9aef766;
+    font: "Maple Mono NF 11";
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 480px;
+    height: 450px;
+    border: 1px;
+    border-color: @accent-border;
+    border-radius: 16px;
+    background-color: @bg;
+    padding: 0;
+}
+
+mainbox {
+    background-color: transparent;
+    padding: 10px;
+    spacing: 6px;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: transparent;
+    padding: 0;
+    spacing: 8px;
+}
+
+prompt {
+    background-color: @accent;
+    text-color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 10px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: "";
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    padding: 8px 4px;
+}
+
+message {
+    background-color: transparent;
+    text-color: @fg-dim;
+    padding: 2px 6px 4px 6px;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 9;
+    spacing: 2px;
+    padding: 4px 0 0 0;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg;
+    padding: 9px 14px;
+    border-radius: 9px;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: #ffffff;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+scrollbar {
+    width: 0;
+    handle-width: 0;
+    background-color: transparent;
+}
